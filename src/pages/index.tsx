@@ -15,13 +15,12 @@ type Props = {
 const Home = ({ allPosts }: Props) => {
   return (
     <>
-      <Layout>
-        <Head>
-          <title>{`첫 마크다운 글 테스트`}</title>
-        </Head>
-        <Banner />
-        <Introduce />
-        {/* {allPosts.map((post, idx) => (
+      <Head>
+        <title>{`첫 마크다운 글 테스트`}</title>
+      </Head>
+      <Banner />
+      <Introduce />
+      {/* {allPosts.map((post, idx) => (
           <div key={idx}>
             <div>{post.title}</div>
             <div>{post.excerpt}</div>
@@ -30,7 +29,6 @@ const Home = ({ allPosts }: Props) => {
             </Link>
           </div>
         ))} */}
-      </Layout>
     </>
   );
 };

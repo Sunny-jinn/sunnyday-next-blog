@@ -23,12 +23,12 @@ const Post = ({ post, morePosts, preview }: Props) => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <div>{post.title}</div>
       <div>{post.date}</div>
       <TestWrapper>{post.slug}</TestWrapper>
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </Layout>
+    </>
   );
 };
 

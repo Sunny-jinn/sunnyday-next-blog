@@ -1,5 +1,6 @@
+import Layout from '@/components/Layout';
+import GlobalStyle from '@/styles/Global';
 import { AppProps } from 'next/app';
-import '@/styles/global.css';
 
 import localFont from 'next/font/local';
 
@@ -12,8 +13,11 @@ const myFont = localFont({
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={myFont.className}>
-      <Component {...pageProps} />
-    </main>
+    <Layout>
+      <main className={myFont.className}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </main>
+    </Layout>
   );
 }
