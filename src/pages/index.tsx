@@ -2,6 +2,7 @@ import { getAllPosts } from '@/api/api';
 import RootLayout from '@/app/layout';
 import Banner from '@/components/Banner';
 import Header from '@/components/Header';
+import Introduce from '@/components/Introduce';
 import Layout from '@/components/Layout';
 import Post from '@/interfaces/post';
 import Head from 'next/head';
@@ -12,9 +13,6 @@ type Props = {
 };
 
 const Home = ({ allPosts }: Props) => {
-  console.log(allPosts);
-
-  const tempPost = allPosts[0];
   return (
     <>
       <Layout>
@@ -22,6 +20,7 @@ const Home = ({ allPosts }: Props) => {
           <title>{`첫 마크다운 글 테스트`}</title>
         </Head>
         <Banner />
+        <Introduce />
         {/* {allPosts.map((post, idx) => (
           <div key={idx}>
             <div>{post.title}</div>
