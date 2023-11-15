@@ -1,4 +1,3 @@
-import '@/styles/global.css';
 import Header from '../Header';
 
 import * as S from './styled';
@@ -12,7 +11,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <S.Wrapper>
       <Header />
-      <main>{children}</main>
+      {children}
     </S.Wrapper>
   );
 };

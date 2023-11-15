@@ -15,6 +15,12 @@ body {
     Helvetica Neue,
     sans-serif;
   line-height: 1.6;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 * {
@@ -23,4 +29,11 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style-type: none;
+  list-style: none;
 }
