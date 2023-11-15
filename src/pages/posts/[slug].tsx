@@ -1,5 +1,7 @@
 import markdownToHtml, { getAllPosts, getPostBySlug } from '@/api/api';
+import Layout from '@/components/Layout';
 import PostType from '@/interfaces/post';
+import styled from '@emotion/styled';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/arta.css';
 import { useEffect } from 'react';
@@ -10,18 +12,23 @@ type Props = {
   preview?: boolean;
 };
 
+const TestWrapper = styled.div`
+  font-weight: 700;
+  color: #de1d1dff;
+`;
+
 const Post = ({ post, morePosts, preview }: Props) => {
   useEffect(() => {
     hljs.highlightAll();
   }, []);
 
   return (
-    <div>
+    <Layout>
       <div>{post.title}</div>
       <div>{post.date}</div>
-      <div>{post.slug}</div>
+      <TestWrapper>{post.slug}</TestWrapper>
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </div>
+    </Layout>
   );
 };
 
