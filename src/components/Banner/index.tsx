@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import * as S from './styled';
+import ReactTyped from 'react-typed';
 
 const Banner = () => {
   return (
@@ -12,10 +13,22 @@ const Banner = () => {
         height={300}
         style={{ borderRadius: 150 }}
       />
-      <div style={{ fontSize: 30 }}>
-        <div>안녕하세요</div>
-        <div>Frontend 개발자 김진우 입니다</div>
-      </div>
+      <S.Intro>
+        <div>HI 👋</div>
+        <div>
+          I am{' '}
+          <strong>
+            <ReactTyped
+              strings={['Frontend', 'Three.js', 'React', 'Typescript']}
+              typeSpeed={60}
+              backSpeed={40}
+              loop
+            />
+          </strong>
+          <br />
+          junior developer
+        </div>
+      </S.Intro>
     </S.Wrapper>
   );
 };
