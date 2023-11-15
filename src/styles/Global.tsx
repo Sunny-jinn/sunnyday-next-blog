@@ -1,6 +1,6 @@
-import { Global, css } from '@emotion/react';
+import { Global, Theme, css } from '@emotion/react';
 
-const styles = css`
+const styles = (theme: Theme) => css`
   html,
   body {
     padding: 0;
@@ -20,6 +20,13 @@ const styles = css`
     line-height: 1.6;
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    color: ${theme.color.white100};
+    background-color: ${theme.color.background};
   }
 
   body::-webkit-scrollbar {
@@ -42,6 +49,6 @@ const styles = css`
   }
 `;
 
-const GlobalStyle = () => <Global styles={styles} />;
+const GlobalStyle: React.FC = () => <Global styles={styles} />;
 
 export default GlobalStyle;
