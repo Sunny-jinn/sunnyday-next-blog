@@ -33,7 +33,9 @@ const Interface = () => {
     <S.Wrapper className={myFont.className}>
       <Header />
       <AboutSection />
-      <Skills />
+      <S.Section>
+        <Skills />
+      </S.Section>
     </S.Wrapper>
   );
 };
