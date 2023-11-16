@@ -9,5 +9,4 @@ export const Wrapper = styled.div`
 
 export const Intro = styled.div`
   font-size: 60px;
-  margin-left: 30px;
 `;

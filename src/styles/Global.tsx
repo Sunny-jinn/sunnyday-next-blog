@@ -23,10 +23,10 @@ const styles = (theme: Theme) => css`
   }
 
   html {
-    width: 100%;
-    height: 100%;
-    color: ${theme.color.white100};
-    background-color: ${theme.color.background};
+    width: 100vw;
+    height: 100vh;
+    color: '#000';
+    background-color: #f5f0e6;
   }
 
   body::-webkit-scrollbar {

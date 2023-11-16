@@ -11,6 +11,7 @@ const Layout = ({ preview, children }: Props) => {
   return (
     <S.Wrapper>
       <Header />
+
       {children}
     </S.Wrapper>
   );

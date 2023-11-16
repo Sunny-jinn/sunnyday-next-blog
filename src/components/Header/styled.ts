@@ -4,9 +4,11 @@ export const Header = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 1200px;
   font-weight: 700;
   position: fixed;
+  opacity: 1;
+  z-index: 100;
 `;
 
 export const Menus = styled.ul`

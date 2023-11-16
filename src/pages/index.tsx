@@ -1,6 +1,7 @@
 import { getAllPosts } from '@/api/api';
 import RootLayout from '@/app/layout';
 import Banner from '@/components/Banner';
+import Character from '@/components/Character';
 import Header from '@/components/Header';
 import Introduce from '@/components/Introduce';
 import Layout from '@/components/Layout';

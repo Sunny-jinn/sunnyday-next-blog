@@ -2,9 +2,9 @@ import { Theme } from '@emotion/react';
 
 const darkTheme: Theme = {
   color: {
-    black100: '#000',
-    background: '#1e1e1e',
-    white100: '#fff',
+    black100: '#fff',
+    background: '#F5F0E6',
+    white100: '#000',
   },
 };
 

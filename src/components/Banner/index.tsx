@@ -1,8 +1,5 @@
-import Image from 'next/image';
-
 import * as S from './styled';
 import ReactTyped from 'react-typed';
-import Character from '../Character';
 
 const Banner = () => {
   return (
@@ -14,7 +11,6 @@ const Banner = () => {
         height={300}
         style={{ borderRadius: 150 }}
       /> */}
-      <Character />
       <S.Intro>
         <div>HI 👋</div>
         <div>

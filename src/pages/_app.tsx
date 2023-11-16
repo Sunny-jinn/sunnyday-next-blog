@@ -1,10 +1,12 @@
 import Layout from '@/components/Layout';
+import Map from '@/components/Map';
 import GlobalStyle from '@/styles/Global';
 import darkTheme from '@/styles/themes';
 import { ThemeProvider } from '@emotion/react';
 import { AppProps } from 'next/app';
-
 import localFont from 'next/font/local';
+
+import '@/styles/map.css';
 
 const myFont = localFont({
   src: [
@@ -13,15 +15,25 @@ const myFont = localFont({
   ],
 });
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps, router }: AppProps) {
+  const isFirstPage = router.pathname === '/';
+
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Layout>
-        <main className={myFont.className}>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </main>
-      </Layout>
-    </ThemeProvider>
+    <>
+      <GlobalStyle />
+      {isFirstPage ? (
+        <>
+          <Map />
+        </>
+      ) : (
+        <ThemeProvider theme={darkTheme}>
+          <Layout>
+            <main className={myFont.className}>
+              <Component {...pageProps} />
+            </main>
+          </Layout>
+        </ThemeProvider>
+      )}
+    </>
   );
 }
