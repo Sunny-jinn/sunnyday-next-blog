@@ -15,7 +15,9 @@ const Banner = () => {
         <div>HI 👋</div>
         <div>
           I am{' '}
-          <strong>
+          <strong
+            style={{ backgroundColor: '#000', color: '#fff', paddingLeft: 10 }}
+          >
             <ReactTyped
               strings={['Frontend', 'Three.js', 'React', 'Typescript']}
               typeSpeed={60}
