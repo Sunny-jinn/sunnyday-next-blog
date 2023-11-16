@@ -6,6 +6,7 @@ import * as S from './styled';
 import Skills from '../Skills';
 
 import { motion } from 'framer-motion';
+import React from 'react';
 
 const myFont = localFont({
   src: [
@@ -22,9 +23,13 @@ const myFont = localFont({
   ],
 });
 
-const Interface = () => {
-  const AnimatedSection = motion(S.Section);
+type Props = {
+  children: React.ReactNode;
+};
 
+const AnimatedSection = motion(S.Section);
+
+const Interface = () => {
   const animations = {
     initial: {
       opacity: 0,
@@ -38,11 +43,11 @@ const Interface = () => {
         delay: 0.6,
       },
     },
+    viewport: { amount: 0.5 },
   };
 
   return (
     <S.Wrapper className={myFont.className}>
-      <Header />
       <AnimatedSection {...animations}>
         <Banner />
       </AnimatedSection>
