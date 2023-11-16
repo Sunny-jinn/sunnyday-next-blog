@@ -5,13 +5,7 @@ import Introduce from '../Introduce';
 import * as S from './styled';
 import Skills from '../Skills';
 
-const AboutSection = () => {
-  return (
-    <S.Section>
-      <Banner />
-    </S.Section>
-  );
-};
+import { motion } from 'framer-motion';
 
 const myFont = localFont({
   src: [
@@ -29,13 +23,32 @@ const myFont = localFont({
 });
 
 const Interface = () => {
+  const AnimatedSection = motion(S.Section);
+
+  const animations = {
+    initial: {
+      opacity: 0,
+      y: 50,
+    },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.6,
+      },
+    },
+  };
+
   return (
     <S.Wrapper className={myFont.className}>
       <Header />
-      <AboutSection />
-      <S.Section>
+      <AnimatedSection {...animations}>
+        <Banner />
+      </AnimatedSection>
+      <AnimatedSection {...animations}>
         <Skills />
-      </S.Section>
+      </AnimatedSection>
     </S.Wrapper>
   );
 };
