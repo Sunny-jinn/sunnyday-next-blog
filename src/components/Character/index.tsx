@@ -3,7 +3,6 @@ import { MyCharacter } from './MyCharacter';
 
 import { motion } from 'framer-motion-3d';
 import { useEffect, useState } from 'react';
-import { Office } from './Office';
 
 type CharacterProps = {
   section: number;
@@ -15,24 +14,24 @@ const Character = ({ section }: CharacterProps) => {
 
   const { viewport }: RootState = useThree();
 
-  // useEffect(() => {
-  //   if (!isFirstLoading) {
-  //     setAnimation('Falling');
-  //   }
-  //   setIsFirstLoading(false);
-  //   setTimeout(() => {
-  //     if (section === 0) {
-  //       // 첫 화면일 때
-  //       setAnimation('Typing');
-  //     } else if (section === 1) {
-  //       setAnimation('Waving');
-  //     }
-  //   }, 1000);
-  // }, [section]);
+  useEffect(() => {
+    if (!isFirstLoading) {
+      setAnimation('Falling');
+    }
+    setIsFirstLoading(false);
+    setTimeout(() => {
+      if (section === 0) {
+        // 첫 화면일 때
+        setAnimation('Typing');
+      } else if (section === 1) {
+        setAnimation('Waving');
+      }
+    }, 600);
+  }, [section]);
 
   return (
     <motion.group
-      position={[1, -0.5, 1]}
+      position={[0.5, -0.48, 0.35]}
       animate={'' + section}
       transition={{ duration: 1.1 }}
       variants={{
@@ -41,16 +40,16 @@ const Character = ({ section }: CharacterProps) => {
           y: -viewport.height - 2,
           x: 1.3,
           z: 0,
-          rotateX: 0,
-          rotateY: 0,
-          rotateZ: 0,
+          rotateX: 0.5,
+          rotateY: -2.2,
+          rotateZ: 0.5,
           scaleX: 2,
           scaleY: 2,
           scaleZ: 2,
         },
       }}
+      scale={1.8}
     >
-      <Office />
       <MyCharacter section={section} animation={animation} />
     </motion.group>
   );

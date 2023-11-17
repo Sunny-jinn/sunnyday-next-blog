@@ -24,20 +24,15 @@ export function MyCharacter(props: MyCharacterProps) {
     const wavingAnimation: AnimationAction = actions[
       props.animation
     ] as AnimationAction;
-    wavingAnimation.reset().fadeIn(0.7)?.play();
+    wavingAnimation.reset().fadeIn(0.5)?.play();
 
     return () => {
-      actions[props.animation]?.fadeOut(0.7);
+      actions[props.animation]?.fadeOut(0.5);
     };
   }, [actions, animations, props.animation]);
 
   return (
-    <group
-      {...props}
-      dispose={null}
-      position={[0, 0.2, 0]}
-      rotation-y={Math.PI / 1.5}
-    >
+    <group {...props} dispose={null} rotation={[0, Math.PI / 1.5, 0.3]}>
       <primitive object={scene} ref={character} />
     </group>
   );

@@ -11,9 +11,17 @@ export function Office(props: any) {
   const { nodes, materials, animations }: any = useGLTF('/models/office3.gltf');
   const { actions } = useAnimations(animations, group);
   return (
-    <group ref={group} {...props} dispose={null} rotation-y={-Math.PI / 4}>
+    <group
+      ref={group}
+      {...props}
+      dispose={null}
+      rotation-y={-Math.PI / 3.7}
+      rotation-x={Math.PI / 8}
+      position={[0.8, -0.8, 0]}
+      scale={1.6}
+    >
       <group name="Scene">
-        <group name="RootNode" position={[0.428, 1.007, -0.835]}>
+        <group name="RootNode" position={[0.55, 1.007, -0.99]}>
           <mesh
             name="Mug_with_office_tools"
             geometry={nodes.Mug_with_office_tools.geometry}
@@ -22,13 +30,6 @@ export function Office(props: any) {
             scale={100}
           />
         </group>
-        {/* <mesh
-          name="Plane"
-          geometry={nodes.Plane.geometry}
-          material={nodes.Plane.material}
-          position={[0.213, 0, 0.781]}
-          scale={2}
-        /> */}
         <mesh
           name="Cube007_Cube008"
           geometry={nodes.Cube007_Cube008.geometry}
@@ -194,26 +195,26 @@ export function Office(props: any) {
           name="Comp_Mouse"
           geometry={nodes.Comp_Mouse.geometry}
           material={materials.lambert3SG}
-          position={[-0.219, 0.95, -0.854]}
-          scale={0.001}
+          position={[-0.001, 0.95, -0.984]}
+          scale={0.0015}
         />
         <mesh
           name="Monitor"
           geometry={nodes.Monitor.geometry}
           material={materials.lambert3SG}
-          position={[-0.105, 0.964, -0.926]}
+          position={[0.005, 0.964, -0.926]}
           scale={0.002}
         />
         <mesh
           name="Keyboard1"
           geometry={nodes.Keyboard1.geometry}
           material={materials.lambert3SG}
-          position={[-0.116, 0.956, -0.714]}
-          scale={0.001}
+          position={[0.06, 0.956, -0.854]}
+          scale={0.0012}
         />
         <group
           name="Node"
-          position={[11.111, 0.049, -6.063]}
+          position={[11.111, 0.1, -6.063]}
           rotation={[-Math.PI, 0.055, -Math.PI]}
           scale={0.032}
         >
@@ -246,7 +247,7 @@ export function Office(props: any) {
           rotation={[Math.PI, -1.552, Math.PI]}
           scale={0.01}
         />
-        <group name="frappe" position={[0.557, 0.942, -0.506]} scale={0.406}>
+        <group name="frappe" position={[0.67, 0.942, -0.66]} scale={0.406}>
           <mesh
             name="frappe_1"
             geometry={nodes.frappe_1.geometry}
@@ -267,7 +268,7 @@ export function Office(props: any) {
           name="straw"
           geometry={nodes.straw.geometry}
           material={materials.brownDarkest}
-          position={[0.557, 0.942, -0.506]}
+          position={[0.67, 0.942, -0.66]}
           scale={0.406}
         />
         <mesh

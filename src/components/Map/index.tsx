@@ -6,6 +6,7 @@ import Layout from '../Layout';
 import Interface from '../Interface';
 import { useState } from 'react';
 import ScrollManager from '../ScrollManager';
+import { Office } from '../Character/Office';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
@@ -19,6 +20,7 @@ const Map = () => {
         <ScrollControls pages={4} damping={0.1}>
           <ScrollManager section={section} onSectionChange={setSection} />
           <Scroll>
+            <Office />
             <Character section={section} />
           </Scroll>
           <Scroll html>
