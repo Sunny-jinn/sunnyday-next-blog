@@ -4,40 +4,42 @@ Command: npx gltfjsx@6.2.15 public/models/myCharacter.glb -o src/components/Char
 */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { useAnimations, useGLTF } from '@react-three/drei';
+import { useAnimations, useFBX, useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import { AnimationAction } from 'three';
 
-import { motion } from 'framer-motion-3d';
-
 type MyCharacterProps = JSX.IntrinsicElements['group'] & {
   section: number;
+  animation: string;
 };
 
 export function MyCharacter(props: MyCharacterProps) {
   const character = useRef();
 
-  const { scene, animations }: GLTF = useGLTF('/models/newCharacter.glb');
+  const { scene, animations }: GLTF = useGLTF('/models/myCharacter.glb');
 
   const { actions } = useAnimations(animations, character);
 
   useEffect(() => {
     const wavingAnimation: AnimationAction = actions[
-      'Waving'
+      props.animation
     ] as AnimationAction;
-    wavingAnimation.reset().fadeIn(0.32)?.play();
+    wavingAnimation.reset().fadeIn(0.7)?.play();
 
     return () => {
-      actions['Waving']?.fadeOut(0.32);
+      actions[props.animation]?.fadeOut(0.7);
     };
-  }, [actions, animations]);
+  }, [actions, animations, props.animation]);
 
   return (
-    <motion.group>
-      <group {...props} dispose={null}>
-        <primitive object={scene} ref={character} />
-      </group>
-    </motion.group>
+    <group
+      {...props}
+      dispose={null}
+      position={[0, 0.2, 0]}
+      rotation-y={Math.PI / 1.5}
+    >
+      <primitive object={scene} ref={character} />
+    </group>
   );
 }
 

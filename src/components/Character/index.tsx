@@ -1,13 +1,59 @@
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { RootState, useThree } from '@react-three/fiber';
 import { MyCharacter } from './MyCharacter';
+
+import { motion } from 'framer-motion-3d';
+import { useEffect, useState } from 'react';
+import { Office } from './Office';
 
 type CharacterProps = {
   section: number;
 };
 
 const Character = ({ section }: CharacterProps) => {
-  return <MyCharacter section={section} />;
+  const [animation, setAnimation] = useState<string>('Typing');
+  const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true); // 블로그 처음 방문 시 떨어지는 애니메이션 재생 안 되게
+
+  const { viewport }: RootState = useThree();
+
+  // useEffect(() => {
+  //   if (!isFirstLoading) {
+  //     setAnimation('Falling');
+  //   }
+  //   setIsFirstLoading(false);
+  //   setTimeout(() => {
+  //     if (section === 0) {
+  //       // 첫 화면일 때
+  //       setAnimation('Typing');
+  //     } else if (section === 1) {
+  //       setAnimation('Waving');
+  //     }
+  //   }, 1000);
+  // }, [section]);
+
+  return (
+    <motion.group
+      position={[1, -0.5, 1]}
+      animate={'' + section}
+      transition={{ duration: 1.1 }}
+      variants={{
+        0: {},
+        1: {
+          y: -viewport.height - 2,
+          x: 1.3,
+          z: 0,
+          rotateX: 0,
+          rotateY: 0,
+          rotateZ: 0,
+          scaleX: 2,
+          scaleY: 2,
+          scaleZ: 2,
+        },
+      }}
+    >
+      <Office />
+      <MyCharacter section={section} animation={animation} />
+    </motion.group>
+  );
 };
 
 export default Character;
