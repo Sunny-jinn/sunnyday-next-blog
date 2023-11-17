@@ -12,11 +12,15 @@ const Map = () => {
 
   return (
     <>
+      <Layout>{/** HEADER */}</Layout>
       <Canvas>
         <color attach="background" args={['#F5F0E6']} />
+        <ambientLight intensity={4} />
         <ScrollControls pages={4} damping={0.1}>
           <ScrollManager section={section} onSectionChange={setSection} />
-          <Character />
+          <Scroll>
+            <Character section={section} />
+          </Scroll>
           <Scroll html>
             <Interface />
           </Scroll>

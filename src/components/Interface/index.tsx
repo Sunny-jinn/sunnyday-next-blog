@@ -54,6 +54,9 @@ const Interface = () => {
       <AnimatedSection {...animations}>
         <Skills />
       </AnimatedSection>
+      <AnimatedSection {...animations}>
+        <Skills />
+      </AnimatedSection>
     </S.Wrapper>
   );
 };
