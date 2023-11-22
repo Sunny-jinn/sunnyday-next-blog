@@ -38,7 +38,7 @@ const Character = ({ section }: CharacterProps) => {
         0: {},
         1: {
           y: -viewport.height - 2,
-          x: 1.3,
+          x: 1.9,
           z: 0,
           rotateX: 0.5,
           rotateY: -2.2,
