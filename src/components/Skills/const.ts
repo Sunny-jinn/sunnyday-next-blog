@@ -6,18 +6,18 @@ type Skills = {
 export const skills: Skills[] = [
   {
     title: 'React',
-    level: 70,
+    level: 65,
   },
   {
     title: 'Three.js • React Three Fiber',
-    level: 60,
+    level: 55,
   },
   {
     title: 'HTML • CSS • Javascript',
-    level: 80,
+    level: 75,
   },
   {
     title: 'Typescript',
-    level: 65,
+    level: 60,
   },
 ];

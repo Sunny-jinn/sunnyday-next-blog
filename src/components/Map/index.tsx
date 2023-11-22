@@ -23,7 +23,7 @@ const Map = () => {
             <Office />
             <mesh position={[0, -7.7, 0]}>
               <planeGeometry args={[15, 7.73]} />
-              <meshStandardMaterial color={'#ff4848'} />
+              <meshStandardMaterial color={'#c1835c'} />
             </mesh>
             <Character section={section} />
           </Scroll>
