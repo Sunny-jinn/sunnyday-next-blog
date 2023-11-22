@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
 import { skills } from './const';
 import * as S from './styled';
+import Introduce from '../Introduce';
+import Image from 'next/image';
 
 const Skills = () => {
   const AnimatedTitle = motion(S.SkillTitle);
   const AnimatedLevelBar = motion(S.LevelBar);
 
   return (
-    <motion.div whileInView={'visible'}>
+    <motion.div
+      whileInView={'visible'}
+      style={{ width: 600, overflowWrap: 'break-word' }}
+    >
+      <Introduce />
       <S.Title>Skills</S.Title>
       <S.Wrapper>
         {skills.map((skill, idx) => (

@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Div = styled.div`
+  line-height: 1;
   width: 21.5rem;
 `;
 
