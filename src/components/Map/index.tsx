@@ -14,13 +14,17 @@ const Map = () => {
   return (
     <>
       <Layout>{/** HEADER */}</Layout>
-      <Canvas>
-        <color attach="background" args={['#F5F0E6']} />
-        <ambientLight intensity={4} />
+      <Canvas shadows>
+        <ambientLight intensity={2} />
+        <directionalLight position={[-5, 5, 5]} intensity={4} castShadow />
         <ScrollControls pages={4} damping={0.1}>
           <ScrollManager section={section} onSectionChange={setSection} />
           <Scroll>
             <Office />
+            <mesh position={[0, -7.7, 0]}>
+              <planeGeometry args={[15, 7.73]} />
+              <meshStandardMaterial color={'#ff4848'} />
+            </mesh>
             <Character section={section} />
           </Scroll>
           <Scroll html>
