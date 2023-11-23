@@ -2,6 +2,7 @@ import Image from 'next/image';
 import * as S from './styled';
 import { Github } from '@emotion-icons/evaicons-solid/Github';
 import { Instagram } from 'emotion-icons/boxicons-logos';
+import Link from 'next/link';
 
 const Introduce = () => {
   return (
@@ -19,12 +20,16 @@ const Introduce = () => {
           <S.PrivacyCard>
             1999.03.16 rlawlsdn316@gmail.com
             <div style={{ display: 'flex', marginTop: 10 }}>
-              <S.IconBox>
-                <Github width={40} />
-              </S.IconBox>
-              <S.IconBox>
-                <Instagram width={40} />
-              </S.IconBox>
+              <Link href={'https://github.com/Sunny-jinn'}>
+                <S.IconBox>
+                  <Github width={40} />
+                </S.IconBox>
+              </Link>
+              <Link href={'https://www.instagram.com/sunnyjinn_/'}>
+                <S.IconBox>
+                  <Instagram width={40} />
+                </S.IconBox>
+              </Link>
             </div>
           </S.PrivacyCard>
         </div>
