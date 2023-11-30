@@ -14,7 +14,7 @@ export const CustomCursor = styled.div<CustomCursorProps>`
   transition: transform 0.3s ease-out;
   width: ${props => (props.hoverButton ? '20px' : '12px')};
   height: ${props => (props.hoverButton ? '20px' : '12px')};
-  background-color: ${props => (props.hoverButton ? 'transparent' : '#4F46E5')};
-  border: ${props => (props.hoverButton ? '2px solid #4338CA' : 'none')};
+  background-color: ${props => (props.hoverButton ? 'transparent' : '#7f1f4f')};
+  border: ${props => (props.hoverButton ? '2px solid #7d1300' : 'none')};
   z-index: 50;
 `;
