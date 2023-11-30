@@ -7,6 +7,7 @@ import Interface from '../Interface';
 import { useState } from 'react';
 import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
+import { Cursor } from '../Cursor';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
@@ -32,6 +33,7 @@ const Map = () => {
           </Scroll>
         </ScrollControls>
       </Canvas>
+      <Cursor />
     </>
   );
 };
