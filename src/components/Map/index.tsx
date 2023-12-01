@@ -22,6 +22,7 @@ const Map = () => {
           <ScrollManager section={section} onSectionChange={setSection} />
           <Scroll>
             <Office />
+            {/* <RealOffice /> */}
             <mesh position={[0, -7.7, 0]}>
               <planeGeometry args={[15, 7.73]} />
               <meshStandardMaterial color={'#c1835c'} />
