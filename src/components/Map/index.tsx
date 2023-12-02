@@ -8,6 +8,10 @@ import { useState } from 'react';
 import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
+import { Temp } from '../Character/Temp';
+import { Screen } from '../Character/Screen';
+import { MonitorScreen } from '../Character/Monitorscreen';
+import { RealOffice } from '../Character/RealOffice';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
@@ -21,7 +25,9 @@ const Map = () => {
         <ScrollControls pages={4} damping={0.1}>
           <ScrollManager section={section} onSectionChange={setSection} />
           <Scroll>
-            <Office />
+            <Temp />
+            {/* <Screen /> */}
+            {/* <MonitorScreen /> */}
             {/* <RealOffice /> */}
             <mesh position={[0, -7.7, 0]}>
               <planeGeometry args={[15, 7.73]} />
