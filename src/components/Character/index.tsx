@@ -31,7 +31,7 @@ const Character = ({ section }: CharacterProps) => {
 
   return (
     <motion.group
-      position={[0.5, -0.48, 0.35]}
+      position={[0.5, -1.2, 0.5]}
       animate={'' + section}
       transition={{ duration: 1.1 }}
       variants={{
@@ -48,7 +48,7 @@ const Character = ({ section }: CharacterProps) => {
           scaleZ: 2,
         },
       }}
-      scale={1.8}
+      scale={2}
     >
       <MyCharacter section={section} animation={animation} />
     </motion.group>
