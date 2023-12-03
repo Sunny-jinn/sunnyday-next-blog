@@ -8,6 +8,7 @@ import { useState } from 'react';
 import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
+import MagGlasses from '../MagGlasses';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
@@ -23,7 +24,7 @@ const Map = () => {
           <Scroll>
             <Office />
             <Character section={section} />
-            {/* <Temp /> */}
+            <MagGlasses />
             <mesh position={[0, -7.7, 0]}>
               <planeGeometry args={[15, 7.73]} />
               <meshStandardMaterial color={'#c1835c'} />
