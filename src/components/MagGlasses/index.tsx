@@ -1,6 +1,4 @@
-import { OrbitControls } from '@react-three/drei';
 import { MagGlass } from './MagGlass';
-
 import { motion } from 'framer-motion-3d';
 
 const MagGlasses = () => {
@@ -20,10 +18,7 @@ const MagGlasses = () => {
       }}
     >
       <MagGlass />
-      <axesHelper args={[5]} />
-      {/* <OrbitControls /> */}
       <mesh position={[0.8, -7.34, 3]} rotation={[0.24, -0.1, 0]}>
-        {/* <circleGeometry args={[0.68, 32]} /> */}
         <sphereGeometry args={[0.62, 32, 32]} />
         <meshPhysicalMaterial roughness={0} transmission={1} thickness={0.3} />
       </mesh>
