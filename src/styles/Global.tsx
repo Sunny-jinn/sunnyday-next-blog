@@ -26,7 +26,7 @@ const styles = (theme: Theme) => css`
     width: 100vw;
     height: 100vh;
     color: '#000';
-    background-color: #f5f0e6;
+    background-color: #ecf4d6;
   }
 
   body::-webkit-scrollbar {

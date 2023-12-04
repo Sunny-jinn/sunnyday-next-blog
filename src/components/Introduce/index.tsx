@@ -34,10 +34,12 @@ const Introduce = () => {
           </S.PrivacyCard>
         </div>
       </S.AboutCard>
-      안녕하세요! 프론트엔드 주니어 개발자 <strong>김진우</strong>입니다.
-      <br />
-      끊임없이 도전하고 학습하며 늘 발전하고, 사용자에게{' '}
-      <strong>감동을 주는 웹</strong> 경험을 제공하고자 합니다.
+      <div style={{ marginBottom: 10 }}>
+        안녕하세요! 프론트엔드 주니어 개발자 <strong>김진우</strong>입니다.
+        <br />
+        끊임없이 도전하고 학습하며 늘 발전하고, 사용자에게{' '}
+        <strong>감동을 주는 웹</strong> 경험을 제공하고자 합니다.
+      </div>
     </S.Wrapper>
   );
 };

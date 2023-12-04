@@ -1,17 +1,34 @@
 import styled from '@emotion/styled';
 
-export const Title = styled.h2`
-  font-size: 1.5rem;
-  background: linear-gradient(to right, #7d1300, #d34228);
-  -webkit-background-clip: text;
-  color: transparent;
-  background-clip: text;
+export const Title = styled.div`
+  /* background: #265073; */
+  padding: 2px 15px;
+  border-radius: 30px;
+  color: #265073;
+  font-weight: bold;
+  font-size: 24px;
+  position: absolute;
+  top: 3px;
+  left: 100px;
+`;
+
+/**
+ * TODO: Introduce의 Wrapper와 거의 동일한 코드. 리팩토링 필요
+ */
+export const Wrapper2 = styled.div`
+  width: 600px;
+  color: #265073;
+  line-height: 2;
+  font-size: 18px;
+  background-image: url('/assets/background.svg');
+  background-size: 100% 100%;
+  border-radius: 30px;
+  padding: 60px;
+  position: relative;
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 2rem;
-
-  // 모든 자식에게 margin top 추가
+  margin-bottom: 40px;
   & > * + * {
     margin-top: 1rem;
   }
@@ -23,17 +40,17 @@ export const Div = styled.div`
 `;
 
 export const SkillTitle = styled.h2`
-  font-size: 1.25rem; /* Tailwind의 text-xl은 1.25rem입니다. */
+  font-size: 1.25rem;
   font-weight: bold;
-  color: #402e32; /* Tailwind의 text-gray-800 색상입니다. */
+  color: #265073;
 `;
 
 export const TotalBar = styled.div`
-  height: 1rem; /* Tailwind의 h-2는 0.5rem입니다. */
-  width: 100%;
-  background-color: #d3966f; /* Tailwind의 bg-gray-200 색상입니다. */
-  border-radius: 9999px; /* Tailwind의 rounded-full은 완전한 원형 모서리입니다. */
-  margin-top: 0.5rem; /* Tailwind의 mt-2는 0.5rem입니다. */
+  height: 1rem;
+  width: 450px;
+  background-color: #2d9596;
+  border-radius: 5px;
+  /* margin-top: 0.5rem; */
 `;
 
 interface Props {
@@ -42,7 +59,7 @@ interface Props {
 
 export const LevelBar = styled.div<Props>`
   height: 100%;
-  background: linear-gradient(to right, #7d1300, #d34228);
-  border-radius: 9999px; /* Tailwind의 rounded-full과 동일합니다. */
+  background: linear-gradient(to right, #265073, #3876a8);
+  border-radius: 5px; /* Tailwind의 rounded-full과 동일합니다. */
   width: ${props => props.level}%;
 `;

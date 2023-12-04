@@ -2,25 +2,27 @@ import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   width: 100%;
-  color: #402e32;
+  color: #265073;
   line-height: 2;
   font-size: 18px;
-  border: 10px solid #7d1300;
+  background-image: url('/assets/background.svg');
+  background-size: 100% 100%;
   border-radius: 30px;
-  padding: 30px;
-  margin-bottom: 100px;
+  padding: 60px;
+  margin-bottom: -30px;
 `;
 
 export const AboutCard = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
 `;
 
 export const PrivacyCard = styled.div`
   font-weight: bold;
-  margin-left: 30px;
+  margin-left: 50px;
 `;
 
 export const IconBox = styled.div`
@@ -39,13 +41,13 @@ export const IconBox = styled.div`
 `;
 
 export const Title = styled.div`
-  background: #7d1300;
+  /* background: #265073; */
   padding: 2px 15px;
   border-radius: 30px;
-  color: white;
+  color: #265073;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 24px;
   position: absolute;
-  top: -57px;
-  left: -1px;
+  top: -66px;
+  left: 19px;
 `;

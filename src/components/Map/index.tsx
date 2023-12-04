@@ -27,7 +27,7 @@ const Map = () => {
             <MagGlasses />
             <mesh position={[0, -7.7, 0]}>
               <planeGeometry args={[15, 7.73]} />
-              <meshStandardMaterial color={'#c1835c'} />
+              <meshStandardMaterial color={'#2d9596'} />
             </mesh>
           </Scroll>
           <Scroll html>
