@@ -10,21 +10,20 @@ import { GLTF, SkeletonUtils } from 'three-stdlib';
 export function MagGlass(props: any) {
   const character = useRef();
 
-  const { scene } = useGLTF('/models/magGlass.glb');
-  console.log(scene);
+  const { scene } = useGLTF('/models/magG.glb');
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
 
   return (
     <group
       {...props}
-      position={[4.5, -10, 1]}
+      position={[2, -9, 3.6]}
       dispose={null}
-      rotation={[0.1, 3.14, -0.9]}
-      scale={0.025}
+      rotation={[3.9, 2.8, -2.5]}
+      scale={12}
     >
       <primitive object={clone} ref={character} />
     </group>
   );
 }
 
-useGLTF.preload('/models/magGlass.glb');
+useGLTF.preload('/models/magG.glb');
