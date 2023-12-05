@@ -10,7 +10,7 @@ import { GLTF, SkeletonUtils } from 'three-stdlib';
 export function MagGlass(props: any) {
   const character = useRef();
 
-  const { scene } = useGLTF('/models/magG.glb');
+  const { scene } = useGLTF('/models/magGlass.glb');
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
 
   return (
@@ -26,4 +26,4 @@ export function MagGlass(props: any) {
   );
 }
 
-useGLTF.preload('/models/magG.glb');
+useGLTF.preload('/models/magGlass.glb');
