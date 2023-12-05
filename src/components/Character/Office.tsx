@@ -11,9 +11,7 @@ export function Office(props: any) {
   const group = useRef();
   const screen = useRef(null);
 
-  const { nodes, materials, animations }: any = useGLTF(
-    '/models/newOffice.gltf',
-  );
+  const { nodes, materials, animations }: any = useGLTF('/models/office.gltf');
   const { actions } = useAnimations(animations, screen);
 
   return (
@@ -35,6 +33,30 @@ export function Office(props: any) {
             position={[0.436, -0.058, 0.087]}
             scale={100}
           />
+        </group>
+        <group
+          name="Rug"
+          position={[0.048, 0.015, 0.45]}
+          rotation={[0, 1.552, 0]}
+          scale={0.517}
+        >
+          <group
+            name="Carpet_1"
+            position={[-0.038, 0, 0.33]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={93.62}
+          >
+            <mesh
+              name="Carpet_1_1"
+              geometry={nodes.Carpet_1_1.geometry}
+              material={materials.DarkRed}
+            />
+            <mesh
+              name="Carpet_1_2"
+              geometry={nodes.Carpet_1_2.geometry}
+              material={materials.LightOrange}
+            />
+          </group>
         </group>
         <group
           name="newChair"
@@ -473,4 +495,4 @@ export function Office(props: any) {
   );
 }
 
-useGLTF.preload('/models/newOffice.gltf');
+useGLTF.preload('/models/office.gltf');
