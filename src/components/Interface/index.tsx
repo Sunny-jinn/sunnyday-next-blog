@@ -1,12 +1,11 @@
 import localFont from 'next/font/local';
 import Banner from '../Banner';
-import Header from '../Header';
-import Introduce from '../Introduce';
 import * as S from './styled';
 import Skills from '../Skills';
 
 import { motion } from 'framer-motion';
 import React from 'react';
+import Projects from '../Projects';
 
 const myFont = localFont({
   src: [
@@ -22,10 +21,6 @@ const myFont = localFont({
     },
   ],
 });
-
-type Props = {
-  children: React.ReactNode;
-};
 
 const AnimatedSection = motion(S.Section);
 
@@ -54,8 +49,8 @@ const Interface = () => {
       <AnimatedSection {...animations}>
         <Skills />
       </AnimatedSection>
-      <AnimatedSection {...animations}>
-        <Skills />
+      <AnimatedSection>
+        <Projects />
       </AnimatedSection>
     </S.Wrapper>
   );
