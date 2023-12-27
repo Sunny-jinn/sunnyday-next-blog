@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.div`
-  /* background: #265073; */
   padding: 2px 15px;
   border-radius: 30px;
   color: #265073;
@@ -47,10 +46,9 @@ export const SkillTitle = styled.h2`
 
 export const TotalBar = styled.div`
   height: 1rem;
-  width: 450px;
+  width: 480px;
   background-color: #2d9596;
   border-radius: 5px;
-  /* margin-top: 0.5rem; */
 `;
 
 interface Props {

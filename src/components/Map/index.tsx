@@ -1,7 +1,6 @@
-import { OrbitControls, Scroll, ScrollControls } from '@react-three/drei';
+import { Scroll, ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Character from '../Character';
-import Header from '../Header';
 import Layout from '../Layout';
 import Interface from '../Interface';
 import { useState } from 'react';
@@ -15,7 +14,7 @@ const Map = () => {
 
   return (
     <>
-      <Layout>{/** HEADER */}</Layout>
+      <Layout></Layout>
       <Canvas shadows>
         <ambientLight intensity={2} />
         <directionalLight position={[-5, 5, 5]} intensity={4} castShadow />

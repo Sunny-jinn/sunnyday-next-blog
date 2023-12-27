@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { skills } from './const';
 import * as S from './styled';
 import Introduce from '../Introduce';
-import Image from 'next/image';
 
 const Skills = () => {
   const AnimatedTitle = motion(S.SkillTitle);
