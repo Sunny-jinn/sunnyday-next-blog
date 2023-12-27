@@ -21,16 +21,15 @@ const styles = (theme: Theme) => css`
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
     scrollbar-width: none; /* 파이어폭스 */
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   html {
     width: 100vw;
     height: 100vh;
     color: '#000';
     background-color: #ecf4d6;
-  }
-
-  body::-webkit-scrollbar {
-    display: none;
   }
 
   * {
