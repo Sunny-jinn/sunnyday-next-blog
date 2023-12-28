@@ -14,7 +14,7 @@ const Introduce = () => {
           alt=".."
           width={180}
           height={180}
-          style={{ borderRadius: 40 }}
+          style={{ borderRadius: 20 }}
         />
         <div style={{ display: 'flex' }}>
           <S.PrivacyCard>

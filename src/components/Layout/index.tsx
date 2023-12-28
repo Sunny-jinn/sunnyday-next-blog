@@ -4,7 +4,7 @@ import * as S from './styled';
 
 type Props = {
   preview?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const Layout = ({ preview, children }: Props) => {
