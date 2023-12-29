@@ -1,6 +1,10 @@
 import * as S from './styled';
 
-const ProjectCard = ({ color }) => {
+type ProjectCardProps = {
+  color: string;
+};
+
+const ProjectCard = ({ color }: ProjectCardProps) => {
   return (
     <S.Card>
       <S.Content></S.Content>

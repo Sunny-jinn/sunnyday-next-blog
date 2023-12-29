@@ -16,7 +16,7 @@ export const Card = styled.div`
   position: relative;
   width: 300px;
   height: 400px;
-  background: rgba(33, 33, 33, 0.5);
+  background: #555;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,11 +28,46 @@ export const ImgBox = styled.div`
   background: #fff;
   height: 120px;
   z-index: 1;
+  transform-origin: top;
+
+  ${Card}:hover & {
+    transform: translateY(-100%) rotateX(90deg);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 144px;
+    height: 74px;
+    background: #fff;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+    z-index: 1;
+  }
 `;
 
 export const TextBox = styled.div`
   ${commonStyle}
   height: 280px;
+  border-top: 8px solid #555;
   background: ${props => props.color || ''};
-  border-top: 8px solid rgba(33, 33, 33, 0.5);
+  transform-origin: bottom;
+  transition-delay: 0.5s;
+
+  ${Card}:hover & {
+    transform: translateY(100%) rotateX(-90deg);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 160px;
+    height: 80px;
+    background: #555;
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+  }
 `;
