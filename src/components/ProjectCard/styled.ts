@@ -46,6 +46,12 @@ export const ImgBox = styled.div`
     border-bottom-right-radius: 80px;
     z-index: 1;
   }
+
+  img {
+    position: relative;
+    top: 60px;
+    z-index: 1000;
+  }
 `;
 
 export const TextBox = styled.div`
