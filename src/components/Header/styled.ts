@@ -4,11 +4,16 @@ export const Header = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   font-weight: 700;
   position: fixed;
   opacity: 1;
   z-index: 100;
+
+  @media (max-width: 1200px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Menus = styled.ul`
