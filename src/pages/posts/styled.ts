@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -6,7 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 200px;
+  padding-top: 130px;
 `;
 
 export const Container = styled.div`
@@ -15,29 +16,30 @@ export const Container = styled.div`
   height: 170px;
   display: flex;
   padding: 20px 0;
+  border-top: 0.3px solid #aaa;
+  transition: 0.5s;
 
-  @media (max-width: 900px) {
-    width: 100%;
+  @media ${TABLET_MEDIA_QUERY} {
+    width: 600px;
+    padding: 20px 10px;
   }
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 0.5px;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+  &:hover {
+    background: #e1e9ca;
   }
+`;
 
-  &::before {
-    top: 0;
-  }
+export const Img = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-  &::after {
-    bottom: 0;
-  }
+export const Title = styled.div`
+  font-size: 24px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 100px;
 `;
 
 export const PostTitle = styled.div`
@@ -45,6 +47,18 @@ export const PostTitle = styled.div`
   font-weight: 600;
   display: flex;
   align-items: baseline;
+  margin-bottom: 20px;
+`;
+
+export const PostTitleText = styled.div`
+  width: 630px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media ${TABLET_MEDIA_QUERY} {
+    width: 300px;
+  }
 `;
 
 export const PostDate = styled.div`

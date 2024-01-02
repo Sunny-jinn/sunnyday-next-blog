@@ -1,5 +1,8 @@
 import { Global, Theme, css } from '@emotion/react';
 
+const TABLET_WIDTH = 900;
+export const TABLET_MEDIA_QUERY = `screen and (max-width:${TABLET_WIDTH}px)`;
+
 const styles = (theme: Theme) => css`
   html,
   body {
