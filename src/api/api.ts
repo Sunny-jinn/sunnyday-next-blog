@@ -48,6 +48,16 @@ export function getAllPosts(fields: string[] = []) {
   return posts;
 }
 
+export function getPostsByCategory(category: string, fields: string[] = []) {
+  const slugs = getPostSlugs();
+  const posts = slugs
+    .map(slug => getPostBySlug(slug, fields))
+    .filter(post => post.category === category) // 필터링: 특정 카테고리에 속한 포스트만 선택
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+  return posts;
+}
+
 export default async function markdownToHtml(markdown: string) {
   const result = await remark().use(html).process(markdown);
   return result.toString();
