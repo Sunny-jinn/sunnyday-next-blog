@@ -49,6 +49,14 @@ const styles = (theme: Theme) => css`
     list-style-type: none;
     list-style: none;
   }
+
+  .clicked {
+    color: #265073;
+  }
+
+  .notClicked {
+    color: #aaa;
+  }
 `;
 
 const GlobalStyle: React.FC = () => <Global styles={styles} />;
