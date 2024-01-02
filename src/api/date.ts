@@ -5,5 +5,5 @@ export const formatDate = (date: string) => {
     day: '2-digit',
   };
   const formattedDate = new Date(date).toLocaleDateString('ko-kr', options);
-  return formattedDate.replace(/\//g, '.');
+  return formattedDate.replace(/\//g, '.').replace(/ /g, '');
 };
