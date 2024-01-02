@@ -24,4 +24,10 @@ export const Menus = styled.ul`
   justify-content: space-between;
 `;
 
-export const Menu = styled.li``;
+export const Menu = styled.li`
+  transition: 0.5s;
+  &:hover {
+    scale: 1.05;
+    color: #265073;
+  }
+`;

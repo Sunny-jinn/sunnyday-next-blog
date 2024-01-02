@@ -1,11 +1,16 @@
+import Link from 'next/link';
 import * as S from './styled';
 
 const Header = () => {
   return (
     <S.Header>
-      <div>Sunnyday</div>
+      <Link href={`/`}>
+        <S.Menu>Sunnyday</S.Menu>
+      </Link>
       <S.Menus>
-        <S.Menu>POSTS</S.Menu>
+        <Link href={`/posts`}>
+          <S.Menu>POSTS</S.Menu>
+        </Link>
         <S.Menu>구경하기</S.Menu>
       </S.Menus>
     </S.Header>
