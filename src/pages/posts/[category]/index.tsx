@@ -1,26 +1,35 @@
-import { getAllPosts } from '@/api/api';
+import { getAllPosts, getPostsByCategory } from '@/api/api';
 import { PostData } from '@/types/types';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '@/api/date';
-
+import { useRouter } from 'next/router';
 import * as S from './styled';
 
-const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
-  const categories = [...new Set(posts.map(post => post.category))];
-  console.log(categories);
+const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
+  posts,
+  categories,
+}) => {
+  const router = useRouter();
+  const { category: queryCategory } = router.query;
 
   return (
     <S.Wrapper>
       <S.Title>POSTS</S.Title>
       <S.Categories>
         <Link href={`/posts`}>
-          <S.Category className="clicked">All</S.Category>
+          <S.Category className="notClicked">All</S.Category>
         </Link>
-        {categories.map((category, idx) => (
-          <Link href={`/posts/${category}`} key={idx}>
-            <S.Category className="notClicked">{category}</S.Category>
+        {categories.map((item: any, idx: number) => (
+          <Link href={`/posts/${item.category}`} key={idx}>
+            <S.Category
+              className={
+                item.category === queryCategory ? 'clicked' : 'notClicked'
+              }
+            >
+              {item.category}
+            </S.Category>
           </Link>
         ))}
       </S.Categories>
@@ -53,10 +62,12 @@ const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
   );
 };
 
-export default Posts;
+export default Category;
 
-export const getStaticProps: GetStaticProps = () => {
-  const posts = getAllPosts([
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const { category }: any = params;
+
+  const posts = getPostsByCategory(category as string, [
     'slug',
     'title',
     'date',
@@ -64,5 +75,21 @@ export const getStaticProps: GetStaticProps = () => {
     'ogImage',
     'category',
   ]);
-  return { props: { posts } };
+  const categories = getAllPosts(['category']);
+  return { props: { posts, categories } };
 };
+
+export async function getStaticPaths() {
+  const posts = getAllPosts(['category']);
+
+  return {
+    paths: posts.map(post => {
+      return {
+        params: {
+          category: post.category,
+        },
+      };
+    }),
+    fallback: false,
+  };
+}

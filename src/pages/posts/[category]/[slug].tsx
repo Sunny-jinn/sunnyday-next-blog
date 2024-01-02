@@ -1,5 +1,4 @@
 import markdownToHtml, { getAllPosts, getPostBySlug } from '@/api/api';
-import Layout from '@/components/Layout';
 import PostType from '@/interfaces/post';
 import styled from '@emotion/styled';
 import hljs from 'highlight.js';
@@ -64,12 +63,13 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
+  const posts = getAllPosts(['category', 'slug']);
 
   return {
     paths: posts.map(post => {
       return {
         params: {
+          category: post.category,
           slug: post.slug,
         },
       };
