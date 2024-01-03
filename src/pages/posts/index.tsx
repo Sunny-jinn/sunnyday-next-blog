@@ -9,7 +9,6 @@ import * as S from './styled';
 
 const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
   const categories = [...new Set(posts.map(post => post.category))];
-  console.log(categories);
 
   return (
     <S.Wrapper>

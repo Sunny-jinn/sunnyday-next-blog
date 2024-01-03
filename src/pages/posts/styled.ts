@@ -58,7 +58,7 @@ export const Category = styled.div`
 
 export const PostTitle = styled.div`
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: baseline;
   margin-bottom: 20px;
