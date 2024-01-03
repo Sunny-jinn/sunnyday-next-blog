@@ -4,13 +4,14 @@ import * as S from './styled';
 
 type Props = {
   preview?: boolean;
+  back?: boolean;
   children?: React.ReactNode;
 };
 
-const Layout = ({ preview, children }: Props) => {
+const Layout = ({ preview, back, children }: Props) => {
   return (
     <S.Wrapper>
-      <Header />
+      <Header back={back} />
 
       {children}
     </S.Wrapper>

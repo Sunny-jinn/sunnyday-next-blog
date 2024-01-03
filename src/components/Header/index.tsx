@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import * as S from './styled';
+import { HeaderProps } from '@/types/types';
 
-const Header = () => {
+const Header = ({ back }: HeaderProps) => {
   return (
     <S.Wrapper>
-      <S.Header>
+      <S.Header back={back}>
         <Link href={`/`}>
           <S.Menu>Sunnyday</S.Menu>
         </Link>

@@ -17,3 +17,7 @@ export type PostMeta = {
 export type PostData = PostMeta & {
   contentHtml: string;
 };
+
+export type HeaderProps = {
+  back?: boolean;
+};

@@ -1,4 +1,5 @@
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
+import { HeaderProps } from '@/types/types';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -7,7 +8,7 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Header = styled.header`
+export const Header = styled.header<HeaderProps>`
   height: 60px;
   display: flex;
   align-items: center;
@@ -18,6 +19,7 @@ export const Header = styled.header`
   opacity: 1;
   z-index: 100;
   transition: 0.5s;
+  background: ${props => (props.back ? '#ecf4d6' : 'transparent')};
 
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;

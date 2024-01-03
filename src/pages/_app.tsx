@@ -28,7 +28,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
         </>
       ) : (
         <ThemeProvider theme={darkTheme}>
-          <Layout>
+          <Layout back>
             <main className={myFont.className}>
               <Component {...pageProps} />
             </main>
