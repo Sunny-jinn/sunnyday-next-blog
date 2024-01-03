@@ -1,33 +1,32 @@
 import markdownToHtml, { getAllPosts, getPostBySlug } from '@/api/api';
 import PostType from '@/interfaces/post';
-import styled from '@emotion/styled';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/arta.css';
 import { useEffect } from 'react';
 
+import * as S from './styled';
+import { formatDate } from '@/api/date';
+import Link from 'next/link';
+
 type Props = {
   post: PostType;
-  morePosts: PostType[];
-  preview?: boolean;
 };
 
-const TestWrapper = styled.div`
-  font-weight: 700;
-  color: #de1d1dff;
-`;
-
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post = ({ post }: Props) => {
   useEffect(() => {
     hljs.highlightAll();
   }, []);
 
   return (
-    <>
-      <div>{post.title}</div>
-      <div>{post.date}</div>
-      <TestWrapper>{post.slug}</TestWrapper>
+    <S.Wrapper>
+      <Link href={`/posts/${post.category}`}>
+        <S.PostCategory>#{post.category}</S.PostCategory>
+      </Link>
+      <S.Title>{post.title}</S.Title>
+      <S.PostDate>{formatDate(post.date)}</S.PostDate>
+      <S.PostLine />
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </>
+    </S.Wrapper>
   );
 };
 
@@ -48,6 +47,7 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'ogImage',
     'coverImage',
+    'category',
   ]);
 
   const content = await markdownToHtml(post.content || '');

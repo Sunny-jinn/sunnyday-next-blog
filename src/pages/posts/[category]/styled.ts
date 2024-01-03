@@ -1,87 +1,65 @@
-import styled from '@emotion/styled';
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   width: 100%;
+  max-width: 900px;
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding-top: 130px;
-`;
 
-export const Container = styled.div`
-  position: relative;
-  width: 900px;
-  height: 170px;
-  display: flex;
-  padding: 20px 0;
-  border-top: 0.3px solid #aaa;
-  transition: 0.5s;
+  img {
+    width: 100%;
+    max-width: 900px;
+  }
 
   @media ${TABLET_MEDIA_QUERY} {
-    width: 600px;
-    padding: 20px 10px;
+    max-width: 600px;
   }
-
-  &:hover {
-    background: #e1e9ca;
-  }
-`;
-
-export const Img = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 export const Title = styled.div`
-  font-size: 24px;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 40px;
+  font-size: 32px;
+  font-weight: 500;
 `;
 
-export const Categories = styled.div`
-  display: flex;
-  margin-bottom: 60px;
-`;
+export const PostCategory = styled.div`
+  font-style: italic;
+  color: #265073;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
 
-export const Category = styled.div`
-  text-align: center;
-  min-width: 80px;
-
-  &:hover {
-    color: #265073;
+  &::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: #265073;
+    transition:
+      width 0.3s ease 0s,
+      left 0.3s ease 0s;
+    width: 0;
   }
-`;
 
-export const PostTitle = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 20px;
-`;
-
-export const PostTitleText = styled.div`
-  width: 630px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-
-  @media ${TABLET_MEDIA_QUERY} {
-    width: 300px;
+  &:hover::after {
+    width: 100%;
+    left: 0;
   }
 `;
 
 export const PostDate = styled.div`
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 14px;
   color: #777;
-  margin-left: auto;
+  margin-bottom: 40px;
 `;
 
-export const PostExcerpt = styled.div`
+export const PostLine = styled.div`
   width: 100%;
+  border-top: 1px solid #bbb;
+  margin-bottom: 40px;
 `;

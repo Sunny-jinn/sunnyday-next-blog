@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '@/api/date';
 import { useRouter } from 'next/router';
-import * as S from './styled';
+import * as S from '../styled';
 
 const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
   posts,
@@ -21,14 +21,12 @@ const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
         <Link href={`/posts`}>
           <S.Category className="notClicked">All</S.Category>
         </Link>
-        {categories.map((item: any, idx: number) => (
-          <Link href={`/posts/${item.category}`} key={idx}>
+        {categories.map((category: string, idx: number) => (
+          <Link href={`/posts/${category}`} key={idx}>
             <S.Category
-              className={
-                item.category === queryCategory ? 'clicked' : 'notClicked'
-              }
+              className={category === queryCategory ? 'clicked' : 'notClicked'}
             >
-              {item.category}
+              {category}
             </S.Category>
           </Link>
         ))}
@@ -75,7 +73,11 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
     'ogImage',
     'category',
   ]);
-  const categories = getAllPosts(['category']);
+  const categoriesSet = new Set(
+    getAllPosts(['category']).map(post => post.category),
+  );
+  const categories = Array.from(categoriesSet);
+  console.log(categories);
   return { props: { posts, categories } };
 };
 
