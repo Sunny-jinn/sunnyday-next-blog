@@ -11,6 +11,7 @@ import '@/styles/map.css';
 const myFont = localFont({
   src: [
     { path: '../../public/fonts/SCDream3.otf', weight: '400', style: 'normal' },
+    { path: '../../public/fonts/SCDream5.otf', weight: '500', style: 'normal' },
     { path: '../../public/fonts/SCDream7.otf', weight: '700', style: 'normal' },
   ],
 });
