@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
     getAllPosts(['category']).map(post => post.category),
   );
   const categories = Array.from(categoriesSet);
-  console.log(categories);
   return { props: { posts, categories } };
 };
 
