@@ -1,18 +1,24 @@
 import fs from 'fs';
-import { join } from 'path';
+import path, { join } from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { serialize } from 'next-mdx-remote/serialize';
+
+import remarkToc from 'remark-toc';
+import rehypeSanitize from 'rehype-sanitize';
 
 const postsDirectory = join(process.cwd(), '_posts');
+
+export const postFilePaths = fs
+  .readdirSync(postsDirectory)
+  .filter(path => /\.mdx?$/.test(path));
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const realSlug = slug.replace(/\.mdx$/, '');
+  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -39,6 +45,19 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items;
 }
 
+export const getPost = async (slug: string) => {
+  const postFilePath = path.join(postsDirectory, `${slug}.mdx`);
+  const source = fs.readFileSync(postFilePath);
+  const { content, data } = matter(source);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [remarkToc],
+      rehypePlugins: [rehypeSanitize],
+    },
+  });
+  return { mdxSource, data, content };
+};
+
 export function getAllPosts(fields: string[] = []) {
   const slugs = getPostSlugs();
   const posts = slugs
@@ -56,9 +75,4 @@ export function getPostsByCategory(category: string, fields: string[] = []) {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
 
   return posts;
-}
-
-export default async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
 }

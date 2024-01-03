@@ -1,5 +1,4 @@
-import markdownToHtml, { getAllPosts, getPostBySlug } from '@/api/api';
-import PostType from '@/interfaces/post';
+import { getAllPosts, getPost } from '@/api/api';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/arta.css';
 import { useEffect } from 'react';
@@ -8,24 +7,33 @@ import * as S from './styled';
 import { formatDate } from '@/api/date';
 import Link from 'next/link';
 
+import { MDXRemote } from 'next-mdx-remote';
+import { PostData } from '@/types/types';
+
 type Props = {
-  post: PostType;
+  content: string;
+  frontMatter: PostData;
+  mdxSource: any;
 };
 
-const Post = ({ post }: Props) => {
+const Post = ({
+  content,
+  frontMatter: { category, title, date },
+  mdxSource,
+}: Props) => {
   useEffect(() => {
     hljs.highlightAll();
   }, []);
 
   return (
     <S.Wrapper>
-      <Link href={`/posts/${post.category}`}>
-        <S.PostCategory>#{post.category}</S.PostCategory>
+      <Link href={`/posts/${category}`}>
+        <S.PostCategory>#{category}</S.PostCategory>
       </Link>
-      <S.Title>{post.title}</S.Title>
-      <S.PostDate>{formatDate(post.date)}</S.PostDate>
+      <S.Title>{title}</S.Title>
+      <S.PostDate>{formatDate(date)}</S.PostDate>
       <S.PostLine />
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      <MDXRemote {...mdxSource} />
     </S.Wrapper>
   );
 };
@@ -39,25 +47,12 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'author',
-    'content',
-    'ogImage',
-    'coverImage',
-    'category',
-  ]);
-
-  const content = await markdownToHtml(post.content || '');
-
+  const { mdxSource, data, content } = await getPost(params.slug);
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      mdxSource,
+      frontMatter: data,
+      content,
     },
   };
 }
