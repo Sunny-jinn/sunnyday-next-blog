@@ -57,6 +57,18 @@ const styles = (theme: Theme) => css`
   .notClicked {
     color: #aaa;
   }
+
+  blockquote {
+    background: #2d353b;
+    border-left: 6px solid #4689c0;
+    color: #fff;
+    margin: 0;
+    padding-left: 5px;
+  }
+
+  blockquote p {
+    margin: 3px 0;
+  }
 `;
 
 const GlobalStyle: React.FC = () => <Global styles={styles} />;
