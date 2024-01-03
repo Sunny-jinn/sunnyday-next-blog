@@ -52,6 +52,9 @@ const styles = (theme: Theme) => css`
 
   .clicked {
     color: #265073;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-position: under;
   }
 
   .notClicked {
