@@ -1,6 +1,13 @@
+import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
-export const Header = styled.div`
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Header = styled.header`
   height: 60px;
   display: flex;
   align-items: center;
@@ -10,9 +17,10 @@ export const Header = styled.div`
   position: fixed;
   opacity: 1;
   z-index: 100;
+  transition: 0.5s;
 
-  @media (max-width: 1200px) {
-    padding: 0 20px;
+  @media ${TABLET_MEDIA_QUERY} {
+    max-width: 600px;
   }
 `;
 
