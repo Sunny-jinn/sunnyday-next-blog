@@ -18,7 +18,6 @@ export const Header = styled.header<HeaderProps>`
   position: fixed;
   opacity: 1;
   z-index: 100;
-  transition: 0.5s;
   background: ${props => (props.back ? '#ecf4d6' : 'transparent')};
 
   @media ${TABLET_MEDIA_QUERY} {
@@ -39,5 +38,24 @@ export const Menu = styled.li`
   &:hover {
     scale: 1.05;
     color: #265073;
+  }
+`;
+
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 300;
+
+  @media (min-width: 900px) {
+    > :first-child {
+      display: none; /* 이미지 숨김 */
+    }
+  }
+
+  @media ${TABLET_MEDIA_QUERY} {
+    > :last-child {
+      display: none; /* 텍스트 숨김 */
+    }
   }
 `;
