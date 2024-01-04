@@ -9,11 +9,16 @@ import localFont from 'next/font/local';
 import '@/styles/map.css';
 import Head from 'next/head';
 
-const myFont = localFont({
+export const myFont = localFont({
   src: [
     { path: '../../public/fonts/SCDream3.otf', weight: '400', style: 'normal' },
     { path: '../../public/fonts/SCDream5.otf', weight: '500', style: 'normal' },
     { path: '../../public/fonts/SCDream7.otf', weight: '700', style: 'normal' },
+    {
+      path: '../../public/fonts/BagelFatOne-Regular.ttf',
+      weight: '300',
+      style: 'normal',
+    },
   ],
 });
 
@@ -33,11 +38,11 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
         </>
       ) : (
         <ThemeProvider theme={darkTheme}>
-          <Layout back>
-            <main className={myFont.className}>
+          <main className={myFont.className}>
+            <Layout back>
               <Component {...pageProps} />
-            </main>
-          </Layout>
+            </Layout>
+          </main>
         </ThemeProvider>
       )}
     </>

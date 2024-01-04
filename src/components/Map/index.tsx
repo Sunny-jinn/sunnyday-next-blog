@@ -8,13 +8,16 @@ import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
 import MagGlasses from '../MagGlasses';
+import { myFont } from '@/pages/_app';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
 
   return (
     <>
-      <Layout></Layout>
+      <main className={myFont.className}>
+        <Layout></Layout>
+      </main>
       <Canvas shadows>
         <ambientLight intensity={2} />
         <directionalLight position={[-5, 5, 5]} intensity={4} castShadow />
