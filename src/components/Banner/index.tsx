@@ -8,12 +8,15 @@ const Banner = () => {
       <div>
         I am{' '}
         <strong
-          style={{ backgroundColor: '#000', color: '#fff', paddingLeft: 10 }}
+          style={{ backgroundColor: '#265073', color: '#fff', paddingLeft: 10 }}
         >
           <ReactTyped
             strings={['Frontend', 'Three.js', 'React', 'Typescript']}
             typeSpeed={60}
             backSpeed={40}
+            style={{
+              backgroundColor: '#265073',
+            }}
             loop
           />
         </strong>

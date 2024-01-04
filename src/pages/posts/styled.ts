@@ -77,7 +77,7 @@ export const PostTitleText = styled.div`
 
 export const PostDate = styled.div`
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 400;
   color: #777;
   margin-left: auto;
 `;
