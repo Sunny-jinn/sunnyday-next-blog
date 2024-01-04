@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '@/api/date';
 
-import * as S from './styled';
+import * as S from '../../styles/posts/posts';
 
 const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
   const categories = [...new Set(posts.map(post => post.category))];

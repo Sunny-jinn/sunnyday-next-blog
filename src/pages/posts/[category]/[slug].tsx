@@ -3,7 +3,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/arta.css';
 import { useEffect } from 'react';
 
-import * as S from './styled';
+import * as S from '../../../styles/posts/category';
 import { formatDate } from '@/api/date';
 import Link from 'next/link';
 

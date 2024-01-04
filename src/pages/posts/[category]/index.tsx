@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatDate } from '@/api/date';
 import { useRouter } from 'next/router';
-import * as S from '../styled';
+import * as S from '../../../styles/posts/posts';
 
 const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
   posts,
