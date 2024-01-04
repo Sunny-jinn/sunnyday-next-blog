@@ -7,6 +7,7 @@ import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 
 import '@/styles/map.css';
+import Head from 'next/head';
 
 const myFont = localFont({
   src: [
@@ -21,6 +22,10 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
+      <Head>
+        <title>{"Sunny's blog"}</title>
+        <link rel="icon" href="/assets/sunnylogo_trans.png" />
+      </Head>
       <GlobalStyle />
       {isFirstPage ? (
         <>
