@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 import { MDXRemote } from 'next-mdx-remote';
 import { PostData } from '@/types/types';
+import { NextSeo } from 'next-seo';
 
 type Props = {
   content: string;
@@ -26,15 +27,34 @@ const Post = ({
   }, []);
 
   return (
-    <S.Wrapper>
-      <Link href={`/posts/${category}`}>
-        <S.PostCategory>#{category}</S.PostCategory>
-      </Link>
-      <S.Title>{title}</S.Title>
-      <S.PostDate>{formatDate(date)}</S.PostDate>
-      <S.PostLine />
-      <MDXRemote {...mdxSource} />
-    </S.Wrapper>
+    <>
+      <NextSeo
+        title={`${title}`}
+        description={`Sunny의 ${category}글 보기`}
+        openGraph={{
+          type: 'website',
+          url: '',
+          title: '',
+          description: '',
+          images: [
+            {
+              url: '',
+              width: 800,
+              height: 400,
+            },
+          ],
+        }}
+      />
+      <S.Wrapper>
+        <Link href={`/posts/${category}`}>
+          <S.PostCategory>#{category}</S.PostCategory>
+        </Link>
+        <S.Title>{title}</S.Title>
+        <S.PostDate>{formatDate(date)}</S.PostDate>
+        <S.PostLine />
+        <MDXRemote {...mdxSource} />
+      </S.Wrapper>
+    </>
   );
 };
 

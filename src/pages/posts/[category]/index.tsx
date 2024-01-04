@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { formatDate } from '@/api/date';
 import { useRouter } from 'next/router';
 import * as S from '../../../styles/posts/posts';
+import { NextSeo } from 'next-seo';
 
 const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
   posts,
@@ -15,48 +16,69 @@ const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
   const { category: queryCategory } = router.query;
 
   return (
-    <S.Wrapper>
-      <S.Title>POSTS</S.Title>
-      <S.Categories>
-        <Link href={`/posts`}>
-          <S.Category className="notClicked">All</S.Category>
-        </Link>
-        {categories.map((category: string, idx: number) => (
-          <Link href={`/posts/${category}`} key={idx}>
-            <S.Category
-              className={category === queryCategory ? 'clicked' : 'notClicked'}
-            >
-              {category}
-            </S.Category>
+    <>
+      <NextSeo
+        title="Sunny's posts"
+        description={`Sunny의 ${queryCategory}글 보기`}
+        openGraph={{
+          type: 'website',
+          url: '',
+          title: '',
+          description: '',
+          images: [
+            {
+              url: '',
+              width: 800,
+              height: 400,
+            },
+          ],
+        }}
+      />
+      <S.Wrapper>
+        <S.Title>POSTS</S.Title>
+        <S.Categories>
+          <Link href={`/posts`}>
+            <S.Category className="notClicked">All</S.Category>
+          </Link>
+          {categories.map((category: string, idx: number) => (
+            <Link href={`/posts/${category}`} key={idx}>
+              <S.Category
+                className={
+                  category === queryCategory ? 'clicked' : 'notClicked'
+                }
+              >
+                {category}
+              </S.Category>
+            </Link>
+          ))}
+        </S.Categories>
+        {posts.map((post, idx) => (
+          <Link href={`/posts/${post.category}/${post.slug}`} key={idx}>
+            <S.Container>
+              <S.Img>
+                <Image
+                  src={post.ogImage.url}
+                  alt="이미지 불러오기 오류"
+                  width={124}
+                  height={124}
+                  style={{
+                    marginRight: 40,
+                  }}
+                />
+              </S.Img>
+              <div style={{ flex: 1 }}>
+                <S.PostTitle>
+                  <S.PostTitleText>{post.title}</S.PostTitleText>
+                  <S.PostDate>{formatDate(post.date)}</S.PostDate>
+                </S.PostTitle>
+
+                <S.PostExcerpt>{post.excerpt}</S.PostExcerpt>
+              </div>
+            </S.Container>
           </Link>
         ))}
-      </S.Categories>
-      {posts.map((post, idx) => (
-        <Link href={`/posts/${post.category}/${post.slug}`} key={idx}>
-          <S.Container>
-            <S.Img>
-              <Image
-                src={post.ogImage.url}
-                alt="이미지 불러오기 오류"
-                width={124}
-                height={124}
-                style={{
-                  marginRight: 40,
-                }}
-              />
-            </S.Img>
-            <div style={{ flex: 1 }}>
-              <S.PostTitle>
-                <S.PostTitleText>{post.title}</S.PostTitleText>
-                <S.PostDate>{formatDate(post.date)}</S.PostDate>
-              </S.PostTitle>
-
-              <S.PostExcerpt>{post.excerpt}</S.PostExcerpt>
-            </div>
-          </S.Container>
-        </Link>
-      ))}
-    </S.Wrapper>
+      </S.Wrapper>
+    </>
   );
 };
 

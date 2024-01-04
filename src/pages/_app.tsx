@@ -8,6 +8,7 @@ import localFont from 'next/font/local';
 
 import '@/styles/map.css';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 
 export const myFont = localFont({
   src: [
@@ -22,6 +23,32 @@ export const myFont = localFont({
   ],
 });
 
+const DEFAULT_SEO = {
+  title: "Sunny's blog",
+  description: '주니어 프론트엔드 개발자 sunny의 블로그',
+  canonical: '',
+  openGraph: {
+    type: 'website',
+    locale: 'ko_KR',
+    url: 'https://sunnyday-drab.vercel.app',
+    title: "Sunny's blog",
+    site_name: "Sunny's blog",
+    images: [
+      {
+        url: '/assets/ogImage.png',
+        width: 285,
+        height: 167,
+        alt: '이미지',
+      },
+    ],
+  },
+  twitter: {
+    handle: '@handle',
+    site: '@site',
+    cardType: 'summary_large_image',
+  },
+};
+
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   const isFirstPage = router.pathname === '/';
 
@@ -30,7 +57,12 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
       <Head>
         <title>{"Sunny's blog"}</title>
         <link rel="icon" href="/assets/sunnylogo_trans.png" />
+        <meta
+          name="google-site-verification"
+          content="0z1PBJv2P6eURobR_lFrxgBYYHiR4RVyR5TFqtYYTTk"
+        />
       </Head>
+      <DefaultSeo {...DEFAULT_SEO} />
       <GlobalStyle />
       {isFirstPage ? (
         <>
