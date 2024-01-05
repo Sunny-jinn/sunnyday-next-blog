@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
 
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;
+    padding: 130px 20px 0 20px;
   }
 `;
 

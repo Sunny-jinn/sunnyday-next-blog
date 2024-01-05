@@ -1,28 +1,30 @@
 import styled from '@emotion/styled';
-import { TABLET_MEDIA_QUERY } from '@/styles/Global';
+import { MOBILE_MEDIA_QUERY, TABLET_MEDIA_QUERY } from '@/styles/Global';
 
 export const Wrapper = styled.div`
   width: 100%;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   padding-top: 130px;
+
+  @media ${TABLET_MEDIA_QUERY} {
+    max-width: 600px;
+    padding: 130px 20px;
+  }
 `;
 
 export const Container = styled.div`
   position: relative;
-  width: 900px;
+  width: 100%;
   height: 170px;
   display: flex;
   padding: 20px 0;
   border-top: 0.3px solid #aaa;
   transition: 0.5s;
-
-  @media ${TABLET_MEDIA_QUERY} {
-    width: 600px;
-    padding: 20px 10px;
-  }
 
   &:hover {
     background: #e1e9ca;
@@ -32,6 +34,10 @@ export const Container = styled.div`
 export const Img = styled.div`
   display: flex;
   align-items: center;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    display: none;
+  }
 `;
 
 export const Title = styled.div`
@@ -71,7 +77,13 @@ export const PostTitleText = styled.div`
   text-overflow: ellipsis;
 
   @media ${TABLET_MEDIA_QUERY} {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  @media screen and (max-width: 574px) {
+    width: 100%;
+    max-width: 260px;
   }
 `;
 

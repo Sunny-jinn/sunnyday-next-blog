@@ -1,7 +1,9 @@
 import { Global, Theme, css } from '@emotion/react';
 
 const TABLET_WIDTH = 900;
+const MOBILE_WIDTH = 574;
 export const TABLET_MEDIA_QUERY = `screen and (max-width:${TABLET_WIDTH}px)`;
+export const MOBILE_MEDIA_QUERY = `screen and (max-width:${MOBILE_WIDTH}px)`;
 
 const styles = (theme: Theme) => css`
   html,

@@ -22,6 +22,7 @@ export const Header = styled.header<HeaderProps>`
 
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;
+    padding: 0 20px;
   }
 `;
 
