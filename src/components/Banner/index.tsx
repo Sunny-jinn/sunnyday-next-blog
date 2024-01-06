@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <S.Intro>
       <div>HI 👋</div>
-      <div>
+      <S.IntroText>
         I am{' '}
         <strong
           style={{ backgroundColor: '#265073', color: '#fff', paddingLeft: 10 }}
@@ -22,7 +22,7 @@ const Banner = () => {
         </strong>
         <br />
         junior developer
-      </div>
+      </S.IntroText>
     </S.Intro>
   );
 };

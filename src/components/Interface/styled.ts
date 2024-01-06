@@ -1,3 +1,4 @@
+import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
@@ -9,6 +10,12 @@ export const Section = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: start;
+
+  @media ${TABLET_MEDIA_QUERY} {
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+  }
 `;
 
 export const Wrapper = styled.div`
