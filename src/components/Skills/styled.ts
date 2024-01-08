@@ -1,5 +1,10 @@
 import styled from '@emotion/styled';
 
+export const Box = styled.div`
+  width: 600px;
+  overflow-wrap: break-word;
+`;
+
 export const Title = styled.div`
   padding: 2px 15px;
   border-radius: 30px;
@@ -15,7 +20,6 @@ export const Title = styled.div`
  * TODO: Introduce의 Wrapper와 거의 동일한 코드. 리팩토링 필요
  */
 export const Wrapper2 = styled.div`
-  width: 600px;
   color: #265073;
   line-height: 2;
   font-size: 18px;
@@ -26,7 +30,7 @@ export const Wrapper2 = styled.div`
   position: relative;
 `;
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
   margin-bottom: 40px;
   & > * + * {
     margin-top: 1rem;
@@ -58,6 +62,6 @@ interface Props {
 export const LevelBar = styled.div<Props>`
   height: 100%;
   background: linear-gradient(to right, #265073, #3876a8);
-  border-radius: 5px; /* Tailwind의 rounded-full과 동일합니다. */
+  border-radius: 5px;
   width: ${props => props.level}%;
 `;

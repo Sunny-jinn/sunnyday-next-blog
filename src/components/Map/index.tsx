@@ -63,7 +63,7 @@ const Map = () => {
               </group>
               <MagGlasses />
               <mesh position={[0, -7.7, 0]}>
-                <planeGeometry args={[15, 7.73]} />
+                <planeGeometry args={[30, 7.73]} />
                 <meshStandardMaterial color={'#2d9596'} />
               </mesh>
             </Scroll>

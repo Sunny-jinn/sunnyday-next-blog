@@ -6,16 +6,14 @@ import Introduce from '../Introduce';
 const Skills = () => {
   const AnimatedTitle = motion(S.SkillTitle);
   const AnimatedLevelBar = motion(S.LevelBar);
+  const AnimatedBox = motion(S.Box);
 
   return (
-    <motion.div
-      whileInView={'visible'}
-      style={{ width: 600, overflowWrap: 'break-word' }}
-    >
+    <AnimatedBox whileInView={'visible'}>
       <Introduce />
       <S.Wrapper2>
         <S.Title>Skills</S.Title>
-        <S.Wrapper>
+        <S.Container>
           {skills.map((skill, idx) => (
             <S.Div key={idx}>
               <AnimatedTitle
@@ -51,9 +49,9 @@ const Skills = () => {
               </S.TotalBar>
             </S.Div>
           ))}
-        </S.Wrapper>
+        </S.Container>
       </S.Wrapper2>
-    </motion.div>
+    </AnimatedBox>
   );
 };
 

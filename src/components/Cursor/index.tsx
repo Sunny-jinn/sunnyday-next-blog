@@ -12,8 +12,6 @@ export const Cursor = () => {
   const cursorOutline = useRef<HTMLDivElement>(null);
   const [hoverButton, setHoverButton] = useState(false);
 
-  console.log('Cursor');
-
   const animate = () => {
     let distX = mouseX - outlineX;
     let distY = mouseY - outlineY;
