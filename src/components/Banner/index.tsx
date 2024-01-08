@@ -4,25 +4,31 @@ import ReactTyped from 'react-typed';
 const Banner = () => {
   return (
     <S.Intro>
-      <div>HI 👋</div>
-      <S.IntroText>
-        I am{' '}
-        <strong
-          style={{ backgroundColor: '#265073', color: '#fff', paddingLeft: 10 }}
-        >
-          <ReactTyped
-            strings={['Frontend', 'Three.js', 'React', 'Typescript']}
-            typeSpeed={60}
-            backSpeed={40}
+      <div>
+        <div>HI 👋</div>
+        <S.IntroText>
+          I am{' '}
+          <strong
             style={{
               backgroundColor: '#265073',
+              color: '#fff',
+              paddingLeft: 10,
             }}
-            loop
-          />
-        </strong>
-        <br />
-        junior developer
-      </S.IntroText>
+          >
+            <ReactTyped
+              strings={['Frontend', 'Three.js', 'React', 'Typescript']}
+              typeSpeed={60}
+              backSpeed={40}
+              style={{
+                backgroundColor: '#265073',
+              }}
+              loop
+            />
+          </strong>
+          <br />
+          junior developer
+        </S.IntroText>
+      </div>
     </S.Intro>
   );
 };
