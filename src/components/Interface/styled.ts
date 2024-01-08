@@ -1,7 +1,11 @@
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
-export const Section = styled.section`
+type SectionProps = {
+  type?: string;
+};
+
+export const Section = styled.section<SectionProps>`
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
@@ -14,7 +18,7 @@ export const Section = styled.section`
   @media ${TABLET_MEDIA_QUERY} {
     justify-content: flex-start;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 60px;
   }
 `;
 

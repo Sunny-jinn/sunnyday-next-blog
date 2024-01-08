@@ -43,7 +43,7 @@ const Interface = () => {
 
   return (
     <S.Wrapper className={myFont.className}>
-      <AnimatedSection {...animations}>
+      <AnimatedSection {...animations} type="Intro">
         <Banner />
       </AnimatedSection>
       <AnimatedSection {...animations}>
