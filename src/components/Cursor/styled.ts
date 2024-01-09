@@ -1,3 +1,4 @@
+import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
 // CustomCursorProps 타입 정의
@@ -17,4 +18,8 @@ export const CustomCursor = styled.div<CustomCursorProps>`
   background-color: ${props => (props.hoverButton ? 'transparent' : '#265073')};
   border: ${props => (props.hoverButton ? '2px solid #265073' : 'none')};
   z-index: 50;
+
+  @media ${TABLET_MEDIA_QUERY} {
+    display: none;
+  }
 `;
