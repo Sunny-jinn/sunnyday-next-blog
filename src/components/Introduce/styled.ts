@@ -1,3 +1,4 @@
+import { MOBILE_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -10,6 +11,11 @@ export const Wrapper = styled.div`
   border-radius: 30px;
   padding: 60px;
   margin-bottom: -30px;
+  position: relative;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    padding: 60px 34px;
+  }
 `;
 
 export const AboutCard = styled.div`
@@ -17,12 +23,24 @@ export const AboutCard = styled.div`
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  position: relative;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
 `;
 
 export const PrivacyCard = styled.div`
   font-weight: bold;
   margin-left: 50px;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    margin-left: 30px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
 `;
 
 export const IconBox = styled.div`
@@ -35,19 +53,36 @@ export const IconBox = styled.div`
   cursor: pointer;
   transition: 0.2s ease-in-out;
 
+  @media ${MOBILE_MEDIA_QUERY} {
+    width: 30px;
+  }
+
   &:hover {
     scale: 1.1;
   }
 `;
 
 export const Title = styled.div`
-  /* background: #265073; */
   padding: 2px 15px;
   border-radius: 30px;
   color: #265073;
   font-weight: bold;
   font-size: 24px;
   position: absolute;
-  top: -66px;
-  left: 19px;
+  top: 2px;
+  left: 12%;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    font-size: 18px;
+    top: 22px;
+    left: 10%;
+  }
+`;
+
+export const Intro = styled.div`
+  margin-bottom: 10px;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    font-size: 14px;
+  }
 `;

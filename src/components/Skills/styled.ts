@@ -1,8 +1,33 @@
+import { MOBILE_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
 export const Box = styled.div`
   width: 600px;
   overflow-wrap: break-word;
+  position: relative;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    width: 400px;
+  }
+`;
+
+/**
+ * TODO: Introduce의 Wrapper와 거의 동일한 코드. 리팩토링 필요
+ */
+export const Wrapper2 = styled.div`
+  width: 100%;
+  color: #265073;
+  line-height: 2;
+  font-size: 18px;
+  background-image: url('/assets/background.svg');
+  background-size: 100% 100%;
+  border-radius: 30px;
+  padding: 60px;
+  position: relative;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    padding: 60px 34px;
+  }
 `;
 
 export const Title = styled.div`
@@ -13,21 +38,13 @@ export const Title = styled.div`
   font-size: 24px;
   position: absolute;
   top: 3px;
-  left: 100px;
-`;
+  left: 16.5%;
 
-/**
- * TODO: Introduce의 Wrapper와 거의 동일한 코드. 리팩토링 필요
- */
-export const Wrapper2 = styled.div`
-  color: #265073;
-  line-height: 2;
-  font-size: 18px;
-  background-image: url('/assets/background.svg');
-  background-size: 100% 100%;
-  border-radius: 30px;
-  padding: 60px;
-  position: relative;
+  @media ${MOBILE_MEDIA_QUERY} {
+    font-size: 18px;
+    top: 15px;
+    left: 15%;
+  }
 `;
 
 export const Container = styled.div`
@@ -35,24 +52,38 @@ export const Container = styled.div`
   & > * + * {
     margin-top: 1rem;
   }
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    margin-bottom: 20px;
+  }
 `;
 
 export const Div = styled.div`
   line-height: 1;
-  width: 21.5rem;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    line-height: 0.6;
+  }
 `;
 
 export const SkillTitle = styled.h2`
   font-size: 1.25rem;
   font-weight: bold;
   color: #265073;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    font-size: 14px;
+  }
 `;
 
 export const TotalBar = styled.div`
   height: 1rem;
-  width: 480px;
   background-color: #2d9596;
   border-radius: 5px;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    height: 10px;
+  }
 `;
 
 interface Props {
