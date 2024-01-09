@@ -1,4 +1,4 @@
-import { TABLET_MEDIA_QUERY } from '@/styles/Global';
+import { MOBILE_MEDIA_QUERY, TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
 export const Intro = styled.div`
@@ -13,8 +13,22 @@ export const Intro = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  @media ${TABLET_MEDIA_QUERY} {
+    width: 400px;
+  }
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    width: 250px;
+  }
+`;
+
 export const IntroText = styled.div`
   @media ${TABLET_MEDIA_QUERY} {
-    font-size: 32px;
+    font-size: 48px;
+  }
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    font-size: 30px;
   }
 `;

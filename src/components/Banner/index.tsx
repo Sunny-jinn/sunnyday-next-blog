@@ -4,7 +4,7 @@ import ReactTyped from 'react-typed';
 const Banner = () => {
   return (
     <S.Intro>
-      <div>
+      <S.Container>
         <div>HI 👋</div>
         <S.IntroText>
           I am{' '}
@@ -28,7 +28,7 @@ const Banner = () => {
           <br />
           junior developer
         </S.IntroText>
-      </div>
+      </S.Container>
     </S.Intro>
   );
 };
