@@ -57,7 +57,7 @@ const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
             <S.Container>
               <S.Img>
                 <Image
-                  src={post.ogImage.url}
+                  src={post.coverImage}
                   alt="이미지 불러오기 오류"
                   width={124}
                   height={124}
@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
     'title',
     'date',
     'excerpt',
-    'ogImage',
+    'coverImage',
     'category',
   ]);
   const categoriesSet = new Set(

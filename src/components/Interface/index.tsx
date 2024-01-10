@@ -46,12 +46,10 @@ const Interface = () => {
       <AnimatedSection {...animations} type="Intro">
         <Banner />
       </AnimatedSection>
-      <AnimatedSection {...animations}>
+      <AnimatedSection {...animations} type="Skills">
         <Skills />
       </AnimatedSection>
-      <AnimatedSection>
-        <Projects />
-      </AnimatedSection>
+      <AnimatedSection>{/* <Projects /> */}</AnimatedSection>
     </S.Wrapper>
   );
 };

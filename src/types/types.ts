@@ -6,11 +6,9 @@ export type PostMeta = {
   category: string;
   date: string;
   author: string;
-  ogImage: {
-    url: string;
-  };
   description?: string;
   tags?: string[];
+  coverImage: string;
   categories?: string[];
 };
 
