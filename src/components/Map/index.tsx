@@ -20,6 +20,8 @@ const Map = () => {
   });
   const [position, setPosition] = useState(new THREE.Vector3(0, 0, 0));
   const [scale, setScale] = useState(1);
+  const [meshPosition, setMeshPosition] = useState(-7.7);
+  const [meshArgs, setMeshArgs] = useState(7.73);
 
   const handleResize = useCallback(() => {
     setWindowSize({
@@ -39,9 +41,18 @@ const Map = () => {
     if (windowSize.width <= 900) {
       setScale(0.7);
       setPosition(new THREE.Vector3(-1, -1.5, 0));
+      if (windowSize.width <= 574) {
+        setMeshPosition(-8.583);
+        setMeshArgs(9.5);
+      } else {
+        setMeshPosition(-9.083);
+        setMeshArgs(10.5);
+      }
     } else {
       setScale(1);
       setPosition(new THREE.Vector3(0, 0, 0));
+      setMeshPosition(-7.7);
+      setMeshArgs(7.73);
     }
   }, [windowSize]);
 
@@ -62,8 +73,8 @@ const Map = () => {
                 <Character section={section} />
               </group>
               <MagGlasses />
-              <mesh position={[0, -7.7, 0]}>
-                <planeGeometry args={[30, 7.73]} />
+              <mesh position={[0, meshPosition, 0]}>
+                <planeGeometry args={[20, meshArgs]} />
                 <meshStandardMaterial color={'#2d9596'} />
               </mesh>
             </Scroll>
