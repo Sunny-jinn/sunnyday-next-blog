@@ -38,11 +38,6 @@ const MagGlasses = () => {
     <motion.group
       scale={scale}
       position={position}
-      // animate={{
-      //   x: [0.3, 0.5, 0.4, 0.3],
-      //   y: [-2.7, -3.0, -3.7, -2.7],
-      //   z: [1, 1, 1.2, 1],
-      // }}
       animate={{
         x: [position.x, position.x + 0.2, position.x + 0.1, position.x],
         y: [position.y, position.y - 0.5, position.y - 1, position.y],
