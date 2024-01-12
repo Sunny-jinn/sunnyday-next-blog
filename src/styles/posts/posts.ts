@@ -55,8 +55,7 @@ export const Categories = styled.div`
 
 export const Category = styled.div`
   text-align: center;
-  min-width: 80px;
-
+  padding: 0 10px;
   &:hover {
     color: #265073;
   }
