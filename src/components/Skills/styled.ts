@@ -5,9 +5,11 @@ export const Box = styled.div`
   width: 600px;
   overflow-wrap: break-word;
   position: relative;
+  height: 800px;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
   }
 `;
 

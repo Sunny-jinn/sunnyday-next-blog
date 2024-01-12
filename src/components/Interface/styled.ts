@@ -18,11 +18,13 @@ export const Section = styled.section<SectionProps>`
   @media ${TABLET_MEDIA_QUERY} {
     justify-content: flex-start;
     align-items: center;
-    padding-top: ${props => (props.type === 'Skills' ? '600px' : '60px')};
+    padding-top: ${props => (props.type === 'Skills' ? '200px' : '60px')};
+    margin-top: ${props => (props.type === 'Skills' ? '200px' : '0px')};
   }
 
   @media ${MOBILE_MEDIA_QUERY} {
-    padding-top: ${props => (props.type === 'Skills' ? '400px' : '60px')};
+    padding-top: ${props => (props.type === 'Skills' ? '200px' : '60px')};
+    margin-top: ${props => (props.type === 'Skills' ? '200px' : '0px')};
   }
 `;
 
