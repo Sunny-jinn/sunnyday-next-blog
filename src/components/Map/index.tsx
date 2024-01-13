@@ -11,6 +11,7 @@ import MagGlasses from '../MagGlasses';
 import { myFont } from '@/pages/_app';
 import * as THREE from 'three';
 import * as S from './styled';
+import Background from '../Background';
 
 const Map = () => {
   const [section, setSection] = useState<number>(0);
@@ -73,10 +74,11 @@ const Map = () => {
                 <Character section={section} />
               </group>
               <MagGlasses />
-              <mesh position={[0, meshPosition, 0]}>
+              {/* <mesh position={[0, meshPosition, 0]}>
                 <planeGeometry args={[20, meshArgs]} />
                 <meshStandardMaterial color={'#2d9596'} />
-              </mesh>
+              </mesh> */}
+              <Background />
             </Scroll>
             <Scroll html>
               <Interface />
