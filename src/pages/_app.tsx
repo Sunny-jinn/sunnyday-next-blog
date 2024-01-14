@@ -1,5 +1,4 @@
 import Layout from '@/components/Layout';
-import Map from '@/components/Map';
 import GlobalStyle from '@/styles/Global';
 import darkTheme from '@/styles/themes';
 import { ThemeProvider } from '@emotion/react';
@@ -9,19 +8,7 @@ import localFont from 'next/font/local';
 import '@/styles/map.css';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-
-export const myFont = localFont({
-  src: [
-    { path: '../../public/fonts/SCDream3.otf', weight: '400', style: 'normal' },
-    { path: '../../public/fonts/SCDream5.otf', weight: '500', style: 'normal' },
-    { path: '../../public/fonts/SCDream7.otf', weight: '700', style: 'normal' },
-    {
-      path: '../../public/fonts/BagelFatOne-Regular.ttf',
-      weight: '300',
-      style: 'normal',
-    },
-  ],
-});
+import { Suspense } from 'react';
 
 const DEFAULT_SEO = {
   title: "Sunny's blog",
@@ -49,9 +36,7 @@ const DEFAULT_SEO = {
   },
 };
 
-export default function MyApp({ Component, pageProps, router }: AppProps) {
-  const isFirstPage = router.pathname === '/';
-
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -64,19 +49,11 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
       </Head>
       <DefaultSeo {...DEFAULT_SEO} />
       <GlobalStyle />
-      {isFirstPage ? (
-        <>
-          <Map />
-        </>
-      ) : (
-        <ThemeProvider theme={darkTheme}>
-          <main className={myFont.className}>
-            <Layout back>
-              <Component {...pageProps} />
-            </Layout>
-          </main>
-        </ThemeProvider>
-      )}
+      <ThemeProvider theme={darkTheme}>
+        <Layout back>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </>
   );
 }
