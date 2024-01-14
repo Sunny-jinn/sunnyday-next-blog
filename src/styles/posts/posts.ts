@@ -17,6 +17,15 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const TempHeader = styled.div`
+  width: 100%;
+  height: 60px;
+  background: #ecf4d6;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+`;
+
 export const Container = styled.div`
   position: relative;
   width: 100%;

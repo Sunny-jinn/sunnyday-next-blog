@@ -9,16 +9,16 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.header<HeaderProps>`
-  height: 60px;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 1200px;
   font-weight: 700;
   position: fixed;
+
+  top: 0;
   opacity: 1;
   z-index: 100;
-  background: ${props => (props.back ? '#ecf4d6' : 'transparent')};
 
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;
@@ -36,6 +36,7 @@ export const Menus = styled.ul`
 
 export const Menu = styled.li`
   transition: 0.5s;
+
   &:hover {
     scale: 1.05;
     color: #265073;
@@ -49,13 +50,13 @@ export const Logo = styled.div`
   font-weight: 300;
 
   @media (min-width: 900px) {
-    > :first-child {
+    img {
       display: none; /* 이미지 숨김 */
     }
   }
 
   @media ${TABLET_MEDIA_QUERY} {
-    > :last-child {
+    span {
       display: none; /* 텍스트 숨김 */
     }
   }

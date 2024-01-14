@@ -31,6 +31,7 @@ const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
         }}
       />
       <S.Wrapper>
+        <S.TempHeader />
         <S.Title>POSTS</S.Title>
         <S.Categories>
           <Link href={`/posts`}>

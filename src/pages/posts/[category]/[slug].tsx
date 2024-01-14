@@ -46,6 +46,7 @@ const Post = ({
         }}
       />
       <S.Wrapper>
+        <S.TempHeader />
         <Link href={`/posts/${category}`}>
           <S.PostCategory>#{category}</S.PostCategory>
         </Link>
