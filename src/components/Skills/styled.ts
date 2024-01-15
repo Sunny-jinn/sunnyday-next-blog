@@ -21,7 +21,7 @@ export const Wrapper2 = styled.div`
   color: #265073;
   line-height: 2;
   font-size: 18px;
-  background-image: url('/assets/background.svg');
+  background-image: url('/assets/background_skills.svg');
   background-size: 100% 100%;
   border-radius: 30px;
   padding: 60px;
@@ -74,7 +74,7 @@ export const SkillTitle = styled.h2`
   color: #265073;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    font-size: 14px;
+    font-size: 2.5vw;
   }
 `;
 
@@ -84,7 +84,7 @@ export const TotalBar = styled.div`
   border-radius: 5px;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    height: 10px;
+    height: 1vh;
   }
 `;
 

@@ -6,15 +6,19 @@ export const Wrapper = styled.div`
   color: #265073;
   line-height: 2;
   font-size: 18px;
-  background-image: url('/assets/background.svg');
+  background-image: url('/assets/background_about.svg');
   background-size: 100% 100%;
-  border-radius: 30px;
   padding: 60px;
   margin-bottom: -30px;
   position: relative;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    padding: 60px 34px;
+    padding: 50px 34px;
+    width: calc(100vw - 40px);
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -26,8 +30,10 @@ export const AboutCard = styled.div`
 
   @media ${MOBILE_MEDIA_QUERY} {
     img {
-      width: 100px;
-      height: 100px;
+      max-width: 100px;
+      max-height: 100px;
+      width: 23vw;
+      height: 23vw;
     }
   }
 `;
@@ -38,7 +44,8 @@ export const PrivacyCard = styled.div`
 
   @media ${MOBILE_MEDIA_QUERY} {
     margin-left: 30px;
-    font-size: 14px;
+    font-size: 2.5vw;
+
     line-height: 1.8;
   }
 `;
@@ -73,8 +80,8 @@ export const Title = styled.div`
   left: 12%;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    font-size: 18px;
-    top: 22px;
+    font-size: 4vw;
+    top: 18px;
     left: 10%;
   }
 `;
@@ -83,6 +90,6 @@ export const Intro = styled.div`
   margin-bottom: 10px;
 
   @media ${MOBILE_MEDIA_QUERY} {
-    font-size: 14px;
+    font-size: 2.5vw;
   }
 `;

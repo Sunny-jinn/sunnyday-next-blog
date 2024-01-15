@@ -12,7 +12,6 @@ const Skills = () => {
     <AnimatedBox whileInView={'visible'}>
       <Introduce />
       <S.Wrapper2>
-        <S.Title>Skills</S.Title>
         <S.Container>
           {skills.map((skill, idx) => (
             <S.Div key={idx}>

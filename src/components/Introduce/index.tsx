@@ -7,7 +7,6 @@ import Link from 'next/link';
 const Introduce = () => {
   return (
     <S.Wrapper>
-      <S.Title>About me</S.Title>
       <S.AboutCard>
         <Image
           src="/assets/profile.JPG"
@@ -18,7 +17,8 @@ const Introduce = () => {
         />
         <div style={{ display: 'flex' }}>
           <S.PrivacyCard>
-            1999.03.16 rlawlsdn316@gmail.com
+            1999.03.16
+            <br /> rlawlsdn316@gmail.com
             <div style={{ display: 'flex' }}>
               <Link href={'https://github.com/Sunny-jinn'}>
                 <S.IconBox>
