@@ -1,14 +1,13 @@
 import { Scroll, ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Character from '../Character';
-import Layout from '../Layout';
 import Interface from '../Interface';
 import { useCallback, useEffect, useState } from 'react';
 import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
 import MagGlasses from '../MagGlasses';
-import { myFont } from '@/pages/_app';
+
 import * as THREE from 'three';
 import * as S from './styled';
 import Background from '../Background';
@@ -59,9 +58,6 @@ const Map = () => {
 
   return (
     <>
-      <main className={myFont.className}>
-        <Layout></Layout>
-      </main>
       <S.Wrapper>
         <Canvas shadows>
           <ambientLight intensity={2} />
