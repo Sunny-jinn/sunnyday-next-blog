@@ -1,5 +1,5 @@
 import * as S from './styled';
-import ReactTyped from 'react-typed';
+import { ReactTyped } from 'react-typed';
 
 const Banner = () => {
   return (
