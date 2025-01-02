@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 
 import remarkToc from 'remark-toc';
-import rehypeSanitize from 'rehype-sanitize';
 
 const postsDirectory = join(process.cwd(), '_posts');
 
@@ -52,7 +51,6 @@ export const getPost = async (slug: string) => {
   const mdxSource = await serialize(content, {
     mdxOptions: {
       remarkPlugins: [remarkToc],
-      rehypePlugins: [rehypeSanitize],
     },
   });
   return { mdxSource, data, content };
