@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   flex-direction: column;
   padding-top: 130px;
+  padding-bottom: 100px;
 
   img {
     width: 100%;

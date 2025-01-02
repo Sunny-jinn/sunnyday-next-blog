@@ -46,6 +46,10 @@ const styles = (theme: Theme) => css`
     color: inherit;
   }
 
+  u {
+    text-decoration: underline;
+  }
+
   ul,
   li {
     list-style-type: none;
@@ -69,6 +73,16 @@ const styles = (theme: Theme) => css`
     color: #fff;
     margin: 0;
     padding-left: 5px;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  code {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -1px;
   }
 
   blockquote p {
