@@ -3,7 +3,7 @@ import { MOBILE_MEDIA_QUERY, TABLET_MEDIA_QUERY } from '@/styles/Global';
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 863px;
   display: flex;
   flex-direction: column;
   align-items: center;
