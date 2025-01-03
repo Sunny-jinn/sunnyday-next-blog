@@ -10,11 +10,6 @@ export const Wrapper = styled.div`
   padding-top: 130px;
   padding-bottom: 100px;
 
-  img {
-    width: 100%;
-    max-width: 900px;
-  }
-
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;
     padding: 130px 20px 0 20px;

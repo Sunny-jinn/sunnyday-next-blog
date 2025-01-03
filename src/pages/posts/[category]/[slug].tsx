@@ -1,6 +1,6 @@
 import { getAllPosts, getPost } from '@/api/api';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/arta.css';
+import 'highlight.js/styles/github-dark.css';
 import { useEffect } from 'react';
 
 import * as S from '../../../styles/posts/category';
@@ -10,7 +10,8 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote';
 import { PostData } from '@/types/types';
 import { NextSeo } from 'next-seo';
-
+import { PostImage } from '@/components/PostImage';
+import { PostImageList } from '@/components/PostImageList';
 type Props = {
   content: string;
   frontMatter: PostData;
@@ -25,6 +26,8 @@ const Post = ({
   useEffect(() => {
     hljs.highlightAll();
   }, []);
+
+  const components = { PostImage, PostImageList };
 
   return (
     <>
@@ -53,7 +56,7 @@ const Post = ({
         <S.Title>{title}</S.Title>
         <S.PostDate>{formatDate(date)}</S.PostDate>
         <S.PostLine />
-        <MDXRemote {...mdxSource} />
+        <MDXRemote {...mdxSource} components={components} />
       </S.Wrapper>
     </>
   );

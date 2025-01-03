@@ -79,12 +79,6 @@ const styles = (theme: Theme) => css`
     font-weight: 500;
   }
 
-  code {
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -1px;
-  }
-
   blockquote p {
     margin: 3px 0;
   }

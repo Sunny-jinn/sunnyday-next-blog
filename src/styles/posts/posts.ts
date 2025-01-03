@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 0 auto;
   padding-top: 130px;
+  padding-bottom: 100px;
 
   @media ${TABLET_MEDIA_QUERY} {
     max-width: 600px;

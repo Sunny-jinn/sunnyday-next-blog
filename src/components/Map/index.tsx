@@ -70,10 +70,6 @@ const Map = () => {
                 <Character section={section} />
               </group>
               <MagGlasses />
-              {/* <mesh position={[0, meshPosition, 0]}>
-                <planeGeometry args={[20, meshArgs]} />
-                <meshStandardMaterial color={'#2d9596'} />
-              </mesh> */}
               <Background />
             </Scroll>
             <Scroll html>
