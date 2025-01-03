@@ -17,7 +17,7 @@ const DEFAULT_SEO = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://sunnyday-drab.vercel.app',
+    url: 'https://itssunny.day',
     title: "Sunny's blog",
     site_name: "Sunny's blog",
     images: [

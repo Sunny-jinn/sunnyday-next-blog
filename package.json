@@ -2,7 +2,7 @@
   "name": "sunnyday-next-blog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sunnyday-drab.vercel.app/",
+  "homepage": "https://itssunny.day",
   "scripts": {
     "dev": "next dev",
     "postbuild": "next-sitemap",

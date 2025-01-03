@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://sunnyday-drab.vercel.app/
+Host: https://itssunny.day
 
 # Sitemaps
-Sitemap: https://sunnyday-drab.vercel.app/sitemap.xml
+Sitemap: https://itssunny.day/sitemap.xml
