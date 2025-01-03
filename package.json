@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-typed": "^2.0.12",
     "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.0",
     "remark-toc": "^9.0.0",
     "three": "^0.158.0",
     "three-stdlib": "^2.28.5"

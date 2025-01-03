@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 
 import remarkToc from 'remark-toc';
-
+import remarkGfm from 'remark-gfm';
 const postsDirectory = join(process.cwd(), '_posts');
 
 export const postFilePaths = fs
@@ -50,7 +50,7 @@ export const getPost = async (slug: string) => {
   const { content, data } = matter(source);
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [remarkToc],
+      remarkPlugins: [remarkToc, remarkGfm],
     },
   });
   return { mdxSource, data, content };
