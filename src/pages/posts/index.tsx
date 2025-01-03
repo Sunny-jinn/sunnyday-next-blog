@@ -9,7 +9,8 @@ import * as S from '../../styles/posts/posts';
 import { NextSeo } from 'next-seo';
 
 const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
-  const categories = [...new Set(posts.map(post => post.category))];
+  const categorySet = [...new Set(posts.map(post => post.category))];
+  const categories = Array.from(categorySet).sort((a, b) => a.localeCompare(b));
 
   return (
     <>
