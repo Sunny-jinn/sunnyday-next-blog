@@ -11,9 +11,7 @@
 3. [Project Introduction](#Project-Introduction)
 4. [Start Guide](#Start-Guide)
 5. [Stacks](#Stacks)
-6. [Screenshots](#Screenshots)
-7. [Features](#Features)
-8. [Future Plan](#Future-Plan)
+6. [Future Plan](#Future-Plan)
 
 # Project Information
 
