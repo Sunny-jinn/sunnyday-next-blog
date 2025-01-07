@@ -63,6 +63,7 @@ const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
                   height={124}
                   style={{
                     marginRight: 40,
+                    borderRadius: 10,
                   }}
                 />
               </S.Img>

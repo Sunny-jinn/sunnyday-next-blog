@@ -55,6 +55,7 @@ const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
                   height={124}
                   style={{
                     marginRight: 40,
+                    borderRadius: 10,
                   }}
                 />
               </S.Img>
