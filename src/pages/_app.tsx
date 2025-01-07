@@ -9,6 +9,7 @@ import '@/styles/map.css';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import { Suspense } from 'react';
+import { SplashScreen } from '@/components/SpalshScreen';
 
 const DEFAULT_SEO = {
   title: "Sunny's blog",
@@ -52,6 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={darkTheme}>
         <Layout back>
           <Component {...pageProps} />
+          <SplashScreen />
         </Layout>
       </ThemeProvider>
     </>
