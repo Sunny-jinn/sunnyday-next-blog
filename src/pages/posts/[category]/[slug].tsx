@@ -20,7 +20,7 @@ type Props = {
 
 const Post = ({
   content,
-  frontMatter: { category, title, date },
+  frontMatter: { category, title, date, slug, description },
   mdxSource,
 }: Props) => {
   useEffect(() => {
@@ -33,17 +33,17 @@ const Post = ({
     <>
       <NextSeo
         title={`${title}`}
-        description={`Sunny의 ${category}글 보기`}
+        description={`${description}`}
         openGraph={{
           type: 'website',
-          url: '',
-          title: '',
-          description: '',
+          url: `https://itssunny.day/posts/${category}/${slug}`,
+          title: `${title}`,
+          description: `${description}`,
           images: [
             {
-              url: '',
-              width: 800,
-              height: 400,
+              url: 'https://itssunny.day/assets/ogImage.png',
+              width: 285,
+              height: 167,
             },
           ],
         }}

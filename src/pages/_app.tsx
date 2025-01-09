@@ -3,12 +3,10 @@ import GlobalStyle from '@/styles/Global';
 import darkTheme from '@/styles/themes';
 import { ThemeProvider } from '@emotion/react';
 import { AppProps } from 'next/app';
-import localFont from 'next/font/local';
 
 import '@/styles/map.css';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-import { Suspense } from 'react';
 import { SplashScreen } from '@/components/SpalshScreen';
 
 const DEFAULT_SEO = {
@@ -23,7 +21,7 @@ const DEFAULT_SEO = {
     site_name: "Sunny's blog",
     images: [
       {
-        url: '/assets/ogImage.png',
+        url: 'https://itssunny.day/assets/ogImage.png',
         width: 285,
         height: 167,
         alt: '이미지',

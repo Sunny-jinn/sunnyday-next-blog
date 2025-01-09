@@ -19,14 +19,14 @@ const Posts: NextPage<{ posts: PostData[] }> = ({ posts }) => {
         description="Sunny의 모든 글 보기"
         openGraph={{
           type: 'website',
-          url: '',
-          title: '',
-          description: '',
+          url: 'https://itssunny.day/posts',
+          title: "Sunny's posts",
+          description: 'Sunny의 모든 글 보기',
           images: [
             {
-              url: '',
-              width: 800,
-              height: 400,
+              url: 'https://itssunny.day/assets/ogImage.png',
+              width: 285,
+              height: 167,
             },
           ],
         }}

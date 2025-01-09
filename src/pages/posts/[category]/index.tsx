@@ -18,18 +18,18 @@ const Category: NextPage<{ posts: PostData[]; categories: string[] }> = ({
   return (
     <>
       <NextSeo
-        title="Sunny's posts"
+        title={`Sunny의 ${queryCategory}`}
         description={`Sunny의 ${queryCategory}글 보기`}
         openGraph={{
           type: 'website',
-          url: '',
-          title: '',
-          description: '',
+          url: `https://itssunny.day/posts/${queryCategory}`,
+          title: `Sunny's ${queryCategory} posts`,
+          description: `Sunny의 ${queryCategory}글 보기`,
           images: [
             {
-              url: '',
-              width: 800,
-              height: 400,
+              url: 'https://itssunny.day/assets/ogImage.png',
+              width: 285,
+              height: 167,
             },
           ],
         }}
