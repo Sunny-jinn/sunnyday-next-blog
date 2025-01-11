@@ -12,20 +12,25 @@ import { PostData } from '@/types/types';
 import { NextSeo } from 'next-seo';
 import { PostImage } from '@/components/PostImage';
 import { PostImageList } from '@/components/PostImageList';
+import { Footer } from '@/components/Footer';
 type Props = {
   content: string;
   frontMatter: PostData;
   mdxSource: any;
+  prevPost: PostData;
+  nextPost: PostData;
 };
 
 const Post = ({
   content,
   frontMatter: { category, title, date, slug, description },
   mdxSource,
+  prevPost,
+  nextPost,
 }: Props) => {
   useEffect(() => {
     hljs.highlightAll();
-  }, []);
+  }, [content]);
 
   const components = { PostImage, PostImageList };
 
@@ -57,6 +62,7 @@ const Post = ({
         <S.PostDate>{formatDate(date)}</S.PostDate>
         <S.PostLine />
         <MDXRemote {...mdxSource} components={components} />
+        <Footer prevPost={prevPost} nextPost={nextPost} />
       </S.Wrapper>
     </>
   );
@@ -72,11 +78,20 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const { mdxSource, data, content } = await getPost(params.slug);
+  const allPosts = getAllPosts(['title', 'slug', 'category', 'date']);
+
+  const currentIndex = allPosts.findIndex(post => post.slug === params.slug);
+  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null; // 이전 글
+  const prevPost =
+    currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null; // 다음 글
+
   return {
     props: {
       mdxSource,
       frontMatter: data,
       content,
+      prevPost,
+      nextPost,
     },
   };
 }
