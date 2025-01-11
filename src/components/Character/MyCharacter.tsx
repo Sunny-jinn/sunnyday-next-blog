@@ -13,29 +13,39 @@ type MyCharacterProps = JSX.IntrinsicElements['group'] & {
   animation: string;
 };
 
-export function MyCharacter(props: MyCharacterProps) {
+export const MyCharacter = (props: MyCharacterProps) => {
   const character = useRef();
+  const isFirstRender = useRef(true); // 초기 렌더링 체크를 위한 ref
 
-  const { scene, animations }: GLTF = useGLTF('/models/myCharacter.glb');
-
+  const { scene, animations } = useGLTF('/models/myCharacter.glb');
   const { actions } = useAnimations(animations, character);
 
   useEffect(() => {
-    const wavingAnimation: AnimationAction = actions[
+    const typingAnimation: AnimationAction = actions[
       props.animation
     ] as AnimationAction;
-    wavingAnimation.reset().fadeIn(0.5)?.play();
+
+    if (isFirstRender.current) {
+      // 최초 렌더링 시에만 즉시 시작
+      typingAnimation.reset().play();
+      typingAnimation.fadeIn(0);
+      isFirstRender.current = false;
+    } else {
+      // 그 이후 섹션 변경 시에는 자연스러운 전환
+      typingAnimation.reset().play();
+      typingAnimation.fadeIn(0.5);
+    }
 
     return () => {
       actions[props.animation]?.fadeOut(0.5);
     };
-  }, [actions, animations, props.animation]);
+  }, [actions, props.animation]);
 
   return (
     <group {...props} dispose={null} rotation={[0, Math.PI / 1.5, 0.3]}>
-      <primitive object={scene} ref={character} />
+      <primitive object={scene} ref={character} scale={1} />
     </group>
   );
-}
+};
 
 useGLTF.preload('/models/myCharacter.glb');
