@@ -13,6 +13,7 @@ import { NextSeo } from 'next-seo';
 import { PostImage } from '@/components/PostImage';
 import { PostImageList } from '@/components/PostImageList';
 import { Footer } from '@/components/Footer';
+import { Comments } from '@/components/Comments';
 type Props = {
   content: string;
   frontMatter: PostData;
@@ -63,11 +64,11 @@ const Post = ({
         <S.PostLine />
         <MDXRemote {...mdxSource} components={components} />
         <Footer prevPost={prevPost} nextPost={nextPost} />
+        <Comments />
       </S.Wrapper>
     </>
   );
 };
-
 export default Post;
 
 type Params = {
