@@ -47,6 +47,13 @@ export const IntroIcons = styled.div`
 
 export const IconBox = styled.div`
   cursor: pointer;
+  color: #444;
+  transition: all 0.2s ease;
+
+  &:hover {
+    scale: 1.05;
+    color: #000;
+  }
 `;
 
 export const Navigations = styled.div`

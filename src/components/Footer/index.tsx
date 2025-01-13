@@ -23,21 +23,21 @@ export const Footer = ({
           <S.IntroTitle>Jinwoo Kim</S.IntroTitle>
           <S.IntroSubTitle>Junior Frontend Developer</S.IntroSubTitle>
           <S.IntroIcons>
-            <Link href={'mailto:rlawlsdn316@gmail.com'}>
-              <S.IconBox>
+            <S.IconBox>
+              <Link href={'mailto:rlawlsdn316@gmail.com'}>
                 <Mail width={20} />
-              </S.IconBox>
-            </Link>
-            <Link href={'https://github.com/Sunny-jinn'}>
-              <S.IconBox>
+              </Link>
+            </S.IconBox>
+            <S.IconBox>
+              <Link href={'https://github.com/Sunny-jinn'}>
                 <Github width={20} />
-              </S.IconBox>
-            </Link>
-            <Link href={'https://www.instagram.com/sunnyjinn_/'}>
-              <S.IconBox>
+              </Link>
+            </S.IconBox>
+            <S.IconBox>
+              <Link href={'https://www.instagram.com/sunnyjinn_/'}>
                 <Instagram width={20} />
-              </S.IconBox>
-            </Link>
+              </Link>
+            </S.IconBox>
           </S.IntroIcons>
         </S.Intro>
       </S.Content>
