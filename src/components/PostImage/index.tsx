@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import * as S from './styled';
+
 export const PostImage = ({
   src,
   alt,
@@ -9,13 +10,31 @@ export const PostImage = ({
 }: {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   caption?: string;
 }) => {
   return (
     <S.Wrapper>
-      <Image src={src} alt={alt} width={width} height={height} />
+      {width && height ? (
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          priority={true}
+        />
+      ) : (
+        <S.ImageWrapper>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            style={{ objectFit: 'contain' }}
+            priority={true}
+          />
+        </S.ImageWrapper>
+      )}
       {caption && <S.Caption>{caption}</S.Caption>}
     </S.Wrapper>
   );

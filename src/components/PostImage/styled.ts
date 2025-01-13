@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 `;
 
@@ -22,4 +22,10 @@ export const Caption = styled.div`
   font-size: 14px;
   font-weight: 400;
   color: #bbb;
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9; // 또는 원하는 비율
 `;
