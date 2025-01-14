@@ -14,6 +14,19 @@ export const Wrapper = styled.div`
     max-width: 600px;
     padding: 130px 20px 130px 20px;
   }
+
+  // 블로그 내부 하이퍼링크 스타일 추가
+  // Footer에는 영향 가지 않게 mdx 관련 태그 내부 a 태그에만 스타일 추가함
+  p,
+  h1,
+  h2,
+  h3 {
+    & > a {
+      text-decoration: underline;
+      color: #265073;
+      font-weight: 500;
+    }
+  }
 `;
 
 export const TempHeader = styled.div`

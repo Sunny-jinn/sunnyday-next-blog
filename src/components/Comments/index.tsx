@@ -4,6 +4,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
 import { usePathname } from 'next/navigation';
 
+const GISCUS_CONFIG = {
+  repo: process.env.NEXT_PUBLIC_GITHUB_REPO,
+  repoId: process.env.NEXT_PUBLIC_GITHUB_REPO_ID,
+  category: process.env.NEXT_PUBLIC_GITHUB_CATEGORY,
+  categoryId: process.env.NEXT_PUBLIC_GITHUB_CATEGORY_ID,
+} as const;
+
 export const Comments = () => {
   const [mounted, setMounted] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -29,22 +36,11 @@ export const Comments = () => {
 
     const scriptElement = document.createElement('script');
     scriptElement.setAttribute('src', 'https://giscus.app/client.js');
-    scriptElement.setAttribute(
-      'data-repo',
-      process.env.NEXT_PUBLIC_GITHUB_REPO as string,
-    );
-    scriptElement.setAttribute(
-      'data-repo-id',
-      process.env.NEXT_PUBLIC_GITHUB_REPO_ID as string,
-    );
-    scriptElement.setAttribute(
-      'data-category',
-      process.env.NEXT_PUBLIC_GITHUB_CATEGORY as string,
-    );
-    scriptElement.setAttribute(
-      'data-category-id',
-      process.env.NEXT_PUBLIC_GITHUB_CATEGORY_ID as string,
-    );
+    scriptElement.setAttribute('data-repo', GISCUS_CONFIG.repo!);
+    scriptElement.setAttribute('data-repo-id', GISCUS_CONFIG.repoId!);
+    scriptElement.setAttribute('data-category', GISCUS_CONFIG.category!);
+    scriptElement.setAttribute('data-category-id', GISCUS_CONFIG.categoryId!);
+
     scriptElement.setAttribute('data-mapping', 'pathname');
     scriptElement.setAttribute('data-strict', '0');
     scriptElement.setAttribute('data-reactions-enabled', '1');
