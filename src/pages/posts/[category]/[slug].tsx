@@ -1,6 +1,6 @@
 import { getAllPosts, getPost } from '@/api/api';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github-dark.css';
+import 'highlight.js/styles/tokyo-night-dark.css';
 import { useEffect } from 'react';
 
 import * as S from '../../../styles/posts/category';
@@ -24,7 +24,7 @@ type Props = {
 
 const Post = ({
   content,
-  frontMatter: { category, title, date, slug, description },
+  frontMatter: { category, title, date, slug, excerpt },
   mdxSource,
   prevPost,
   nextPost,
@@ -39,12 +39,12 @@ const Post = ({
     <>
       <NextSeo
         title={`${title}`}
-        description={`${description}`}
+        description={`${excerpt}`}
         openGraph={{
           type: 'website',
           url: `https://itssunny.day/posts/${category}/${slug}`,
           title: `${title}`,
-          description: `${description}`,
+          description: `${excerpt}`,
           images: [
             {
               url: 'https://itssunny.day/assets/ogImage.png',
