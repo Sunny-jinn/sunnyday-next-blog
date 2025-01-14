@@ -50,19 +50,10 @@ const styles = (theme: Theme) => css`
     text-decoration: underline;
   }
 
-  ol {
-    list-style-type: decimal;
-    list-style: decimal;
-  }
-
-  ul {
-    list-style-type: disc;
-    list-style: disc;
-  }
-
-  ol,
-  ul {
-    padding-left: 20px;
+  ul,
+  li {
+    list-style-type: none;
+    list-style: none;
   }
 
   .clicked {

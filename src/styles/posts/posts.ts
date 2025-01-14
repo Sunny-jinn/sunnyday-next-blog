@@ -16,6 +16,21 @@ export const Wrapper = styled.div`
     max-width: 600px;
     padding: 130px 20px;
   }
+
+  ol {
+    list-style-type: decimal;
+    list-style: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style: disc;
+  }
+
+  ol,
+  ul {
+    padding-left: 20px;
+  }
 `;
 
 export const TempHeader = styled.div`
