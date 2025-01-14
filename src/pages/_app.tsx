@@ -51,7 +51,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={darkTheme}>
         <Layout back>
           <Component {...pageProps} />
-          <SplashScreen />
+          {/* <SplashScreen /> */}
         </Layout>
       </ThemeProvider>
     </>
