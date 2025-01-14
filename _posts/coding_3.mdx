@@ -1,0 +1,184 @@
+---
+title: '정적 블로그에 댓글 기능 추가하기 (feat. giscus)'
+category: 'CODING'
+excerpt: 'Next.js로 만든 정적 블로그에서 giscus를 활용해 댓글 기능을 구현하였습니다.'
+coverImage: '/assets/posts/coding_3/thumb.png'
+date: '2025-01-14 23:10:21'
+author:
+  name: sunny
+  picture: '/assets/posts/sunnylogo.png'
+ogImage:
+  url: '/assets/posts/sunnylogo.png'
+---
+
+import { PostImage } from '@/components/PostImage';
+
+## MDX 방식 블로그에 댓글 기능을 추가해봅시다.
+
+기본적으로 서버가 없는 정적 블로그이기 때문에 댓글을 따로 구현하려면
+백엔드 서버가 필요합니다. firebase 같은 서버를 사용하는 방법도 있지만
+이번에는 서버없이 댓글 기능을 추가하는 방법을 소개해보려고 합니다.
+
+## giscus
+
+<PostImage
+  src="/assets/posts/coding_3/img1.jpg"
+  alt="giscus"
+  caption="현재 블로그에 적용된 댓글"
+  width={700}
+  height={320}
+/>
+
+giscus는 github discussions를 기반으로 동작하는 댓글 시스템으로 github 계정만
+있다면 간단하게 사용할 수 있습니다. 저와 같이 서버리스 블로그를 운영하는
+분들에게 추천하는 오픈소스 댓글 시스템입니다.
+
+## 사용 방법
+
+### 1. 댓글로 사용할 github repository를 생성합니다.
+
+<br />
+
+<PostImage
+  src="/assets/posts/coding_3/img2.jpg"
+  alt="giscus"
+  width={450}
+  height={420}
+/>
+저는 blog-comments라는 repository를 따로 생성하였습니다. 따로 repository를
+생성하지 않고 기존의 repository를 사용하셔도 무방합니다. 이후 Settings에서
+Discussions를 활성화합니다.
+<u>이 때 repository는 무조건 **public**이어야 합니다.</u>
+
+### 2. [giscus](https://giscus.app/ko)를 설치합니다.
+
+<br />
+<PostImage
+  src="/assets/posts/coding_3/img3.jpg"
+  alt="giscus"
+  width={500}
+  height={240}
+/>
+
+github에 giscus를 설치하고, 사용할 repository를 연결해주세요. 위의 사진처럼
+통과됐다고 나오면 성공입니다.
+
+### 3. Discussion 카테고리와 테마를 설정해주세요.
+
+Discussion의 여러 카테고리(ex. Announcements, General, Ideas 등) 중에서
+댓글로 사용할 카테고리를 선택하세요. giscus에서는 Announcements를 사용하는
+것을 권장합니다.
+
+이후 테마를 설정해주세요. 테마를 선택할 때 giscus ui도 바뀌게 되는데, 그 중
+본인이 사용할 웹 사이트와 가장 어울리는 테마를 선택하세요. 커스텀 테마도
+사용 가능하다는데.. 건드릴 게 너무 많아서 저는 우선 gruvbox light 테마를
+사용하였습니다. 시간이 된다면 나중에 댓글 테마를 원하는 대로 커스텀 해보고 싶네요.
+
+### 4. 자동완성된 script를 웹 사이트에 적용합니다.
+
+giscus 설정이 끝나면 아래에 script를 자동으로 생성해줍니다. 이를 그대로
+복사하여 사용하시면 되는데 저는 Next.js를 사용하고 있기 때문에 특별한
+방법으로 진행하였습니다.
+
+[한 유저](https://github.com/utterance/utterances/issues/161)분의 코드를 참고하여 작성하였습니다.
+
+```
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+import * as S from './styled';
+import { usePathname } from 'next/navigation';
+
+export const Comments = () => {
+  // ... 코드 생략 ...
+  const loadGiscus = () => {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame',);
+    iframe?.remove();
+
+    const script = document.querySelector('script[src="https://giscus.app/client.js"]',);
+    script?.remove();
+
+    const scriptElement = document.createElement('script');
+    scriptElement.setAttribute('src', 'https://giscus.app/client.js');
+    scriptElement.setAttribute('data-repo', [본인의 repository]);
+    scriptElement.setAttribute('data-repo-id', [본인의 repository id]);
+    scriptElement.setAttribute('data-category', [본인의 category]);
+    scriptElement.setAttribute('data-category-id', [본인의 category id]);
+    scriptElement.setAttribute('data-mapping', 'pathname');
+    scriptElement.setAttribute('data-strict', '0');
+    scriptElement.setAttribute('data-reactions-enabled', '1');
+    scriptElement.setAttribute('data-emit-metadata', '0');
+    scriptElement.setAttribute('data-input-position', 'bottom');
+    scriptElement.setAttribute('data-lang', 'en');
+    scriptElement.setAttribute('data-theme', theme);
+    scriptElement.setAttribute('data-loading', 'lazy');
+    scriptElement.setAttribute('crossorigin', 'anonymous');
+    scriptElement.async = true;
+
+    ref.current?.appendChild(scriptElement);
+  };
+
+  useEffect(() => {
+    if (mounted) {
+      loadGiscus();
+    }
+  }, [mounted]);
+
+  useEffect(() => {
+    if (mounted) {
+      loadGiscus();
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame',);
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme } } },
+      'https://giscus.app',
+    );
+  }, [theme]);
+
+  if (!mounted) return null;
+
+  return <S.CommentsContainer ref={ref} />;
+};
+
+```
+
+giscus 설정 시 등록했던 repository와 category를 입력하고 script 태그 내부에 있던
+id값들을 입력하시면 됩니다.
+
+### 5. 댓글 적용하기
+
+이제 본인이 원하는 위치에 위에서 작성한 component를 불러오면 댓글 기능이
+추가됩니다. 저는 각 포스트 하단에 댓글을 추가하였습니다.
+
+### 🚀 문제점
+
+Footer에 있는 페이지 이동 버튼을 눌러 이동 시 댓글이 동기화되지 않는 문제가
+발생하였습니다. Next의 Link component를 사용하여 페이지 이동 시 댓글 component가
+리렌더링 되지 않아 발생하는 문제였습니다. 이는 간단하게 해결할 수 있었습니다.
+
+```
+  useEffect(() => {
+    if (mounted) {
+      loadGiscus();
+    }
+  }, [pathname]);
+```
+
+위의 코드에 이 부분을 추가한 이유입니다. 저는 giscus 설정 시 페이지 경로를
+포함한 제목을 가진 댓글을 추가하였기 때문에 pathname이 변경될 때 댓글을
+다시 불러와 쉽게 해결할 수 있었습니다.
+
+### 결과
+
+<PostImage
+  src="/assets/posts/coding_3/img4.jpg"
+  alt="giscus"
+  caption="블로그 첫 댓글"
+  width={700}
+  height={469}
+/>
+
+블로그를 내리면 아시겠지만.. 이제 github 계정을 사용해 댓글을 달 수 있습니다!
