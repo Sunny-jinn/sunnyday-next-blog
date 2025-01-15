@@ -16,7 +16,6 @@ export const Section = styled.section<SectionProps>`
   align-items: start;
 
   @media ${TABLET_MEDIA_QUERY} {
-    height: 100vh;
     justify-content: flex-start;
     align-items: center;
     padding-top: ${props => (props.type === 'Skills' ? '150px' : '60px')};
@@ -24,8 +23,8 @@ export const Section = styled.section<SectionProps>`
   }
 
   @media ${MOBILE_MEDIA_QUERY} {
-    padding: ${props => (props.type === 'Skills' ? '20vh 20px' : '60px 0 0 0')};
-    margin-top: ${props => (props.type === 'Skills' ? '200px' : '0px')};
+    padding: ${props => (props.type === 'Skills' ? '0vh 20px' : '60px 0 0 0')};
+    margin-top: 0px;
   }
 `;
 
