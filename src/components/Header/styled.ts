@@ -1,5 +1,6 @@
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import { HeaderProps } from '@/types/types';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -34,13 +35,21 @@ export const Menus = styled.ul`
   justify-content: space-between;
 `;
 
-export const Menu = styled.li`
-  transition: 0.5s;
+const menuStyle = css`
+  transition: 0.3s;
 
   &:hover {
     scale: 1.05;
     color: #265073;
   }
+`;
+
+export const Menu = styled.li`
+  ${menuStyle}
+`;
+
+export const LogoMenu = styled.div`
+  ${menuStyle}
 `;
 
 export const Logo = styled.div`

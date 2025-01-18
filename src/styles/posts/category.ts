@@ -75,7 +75,7 @@ export const PostCategory = styled.div`
 
 export const PostDate = styled.div`
   font-size: 14px;
-  color: #777;
+  color: #444;
   margin-bottom: 40px;
 `;
 

@@ -8,7 +8,10 @@ const Header = ({ back }: HeaderProps) => {
     <S.Wrapper>
       <S.Header back={back}>
         <Link href={`/`}>
-          <S.Menu>
+          {/** 상위 태그에 ul이 없으니 li요소인 Menu 사용 대신
+           * style 복사 후 div 요소인 LogoMenu 사용
+           */}
+          <S.LogoMenu>
             <S.Logo>
               <Image
                 src="/assets/sunnylogo_trans.png"
@@ -18,12 +21,13 @@ const Header = ({ back }: HeaderProps) => {
               />
               <span>{'Sunnyday'}</span>
             </S.Logo>
-          </S.Menu>
+          </S.LogoMenu>
         </Link>
         <S.Menus>
-          <Link href={`/posts`}>
-            <S.Menu>POSTS</S.Menu>
-          </Link>
+          {/** Link를 Menu 안에 넣음으로써 접근성 개선 */}
+          <S.Menu>
+            <Link href={`/posts`}>POSTS</Link>
+          </S.Menu>
           <S.Menu>구경하기</S.Menu>
         </S.Menus>
       </S.Header>
