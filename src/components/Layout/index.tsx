@@ -12,26 +12,28 @@ type Props = {
 export const myFont = localFont({
   src: [
     {
-      path: '../../../public/fonts/SCDream3.otf',
+      path: '../../../public/fonts/SCDream3.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/SCDream5.otf',
+      path: '../../../public/fonts/SCDream5.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/SCDream7.otf',
+      path: '../../../public/fonts/SCDream7.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/BagelFatOne-Regular.ttf',
+      path: '../../../public/fonts/BagelFatOne-Regular.woff2',
       weight: '300',
       style: 'normal',
     },
   ],
+  preload: true,
+  display: 'swap',
 });
 
 const Layout = ({ preview, back, children }: Props) => {

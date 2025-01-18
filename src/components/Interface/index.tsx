@@ -10,12 +10,12 @@ import Projects from '../Projects';
 const myFont = localFont({
   src: [
     {
-      path: '../../../public/fonts/SCDream3.otf',
+      path: '../../../public/fonts/SCDream3.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../../public/fonts/SCDream7.otf',
+      path: '../../../public/fonts/SCDream7.woff2',
       weight: '700',
       style: 'normal',
     },
