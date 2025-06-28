@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import Header from '../Header';
 
 import * as S from './styled';
+import Maintenance from '../maintenance';
 
 type Props = {
   preview?: boolean;
@@ -40,9 +41,9 @@ const Layout = ({ preview, back, children }: Props) => {
   return (
     <main className={myFont.className}>
       <S.Wrapper>
-        <Header back={back} />
-
-        {children}
+        {/* <Header back={back} /> */}
+        {/* {children} */}
+        <Maintenance />
       </S.Wrapper>
     </main>
   );
