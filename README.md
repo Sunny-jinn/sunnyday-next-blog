@@ -16,7 +16,9 @@
 # Project Information
 
 > 주니어 프론트엔드 개발자 김진우 개인 블로그😀 <br />
-> 개발기간 : 2023.12 ~ 2024.01
+
+> ~~개발기간 : 2023.12 ~ 2024.01~~ <br />
+> 2차 개발기간 : 2025.07 ~
 
 # Deploy URL
 
@@ -49,7 +51,7 @@ npm run dev
 
 ### Environment
 
-<img src="https://img.shields.io/badge/Visual Studio Code-2088FF?style=for-the-badge&logo=Visual Studio Code&logoColor=white" /> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" />
+<img src="https://img.shields.io/badge/Cursor-000?style=for-the-badge&logo=Visual Studio Code&logoColor=white" /> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" />
 
 ### Development
 
