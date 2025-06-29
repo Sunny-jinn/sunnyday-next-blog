@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from 'react';
 import ScrollManager from '../ScrollManager';
 import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
-import MagGlasses from '../MagGlasses';
 
 import * as THREE from 'three';
 import * as S from './styled';
@@ -69,7 +68,7 @@ const Map = () => {
                 <Office />
                 <Character section={section} />
               </group>
-              <MagGlasses />
+              {/* <MagGlasses /> */}
               <Background />
             </Scroll>
             <Scroll html>
