@@ -1,10 +1,8 @@
 import { Scroll, ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import Character from '../Character';
 import Interface from '../Interface';
 import { useCallback, useEffect, useState } from 'react';
 import ScrollManager from '../ScrollManager';
-import { Office } from '../Character/Office';
 import { Cursor } from '../Cursor';
 
 import * as THREE from 'three';
@@ -64,11 +62,6 @@ const Map = () => {
           <ScrollControls pages={4} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Scroll>
-              <group scale={scale} position={position}>
-                <Office />
-                <Character section={section} />
-              </group>
-              {/* <MagGlasses /> */}
               <Background />
             </Scroll>
             <Scroll html>

@@ -22,8 +22,8 @@ const styles = (theme: Theme) => css`
   html {
     width: 100vw;
     height: 100vh;
-    color: '#000';
-    background-color: #ecf4d6;
+    color: ${theme.color.white_100};
+    background-color: ${theme.color.background};
   }
 
   * {
@@ -46,14 +46,14 @@ const styles = (theme: Theme) => css`
   }
 
   .clicked {
-    color: #265073;
+    color: ${theme.color.celeste_100};
     font-weight: 500;
     text-decoration: underline;
     text-underline-position: under;
   }
 
   .notClicked {
-    color: #666;
+    color: ${theme.color.gray_100};
   }
 
   blockquote {
@@ -73,6 +73,8 @@ const styles = (theme: Theme) => css`
   }
 `;
 
-const GlobalStyle: React.FC = () => <Global styles={styles} />;
+const GlobalStyle: React.FC<{ theme: Theme }> = ({ theme }) => (
+  <Global styles={styles(theme)} />
+);
 
 export default GlobalStyle;

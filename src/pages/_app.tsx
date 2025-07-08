@@ -1,13 +1,12 @@
 import Layout from '@/components/Layout';
 import GlobalStyle from '@/styles/Global';
-import darkTheme from '@/styles/themes';
+import theme from '@/styles/themes';
 import { ThemeProvider } from '@emotion/react';
 import { AppProps } from 'next/app';
 
 import '@/styles/map.css';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
-import { SplashScreen } from '@/components/SpalshScreen';
 
 const DEFAULT_SEO = {
   title: "Sunny's blog",
@@ -47,11 +46,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <DefaultSeo {...DEFAULT_SEO} />
-      <GlobalStyle />
-      <ThemeProvider theme={darkTheme}>
+      <GlobalStyle theme={theme} />
+      <ThemeProvider theme={theme}>
         <Layout back>
           <Component {...pageProps} />
-          {/* <SplashScreen /> */}
         </Layout>
       </ThemeProvider>
     </>
