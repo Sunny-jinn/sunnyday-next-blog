@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
 export const TempHeader = styled.div`
   width: 100%;
   height: 60px;
-  background: #ecf4d6;
+  background: ${({ theme }) => theme.color.background};
   position: fixed;
   top: 0;
   z-index: 2;
@@ -48,11 +48,11 @@ export const Container = styled.div`
   height: 170px;
   display: flex;
   padding: 20px 0;
-  border-top: 0.3px solid #aaa;
+  border-top: 0.3px solid ${({ theme }) => theme.color.gray_200};
   transition: 0.5s;
 
   &:hover {
-    background: #e1e9ca;
+    background: ${({ theme }) => theme.color.gray_400};
   }
 `;
 
@@ -82,7 +82,7 @@ export const Category = styled.div`
   text-align: center;
   padding: 0 10px;
   &:hover {
-    color: #265073;
+    color: ${({ theme }) => theme.color.celeste_100};
   }
 `;
 
@@ -114,7 +114,7 @@ export const PostTitleText = styled.div`
 export const PostDate = styled.div`
   font-size: 12px;
   font-weight: 400;
-  color: #444;
+  color: ${({ theme }) => theme.color.gray_200};
   margin-left: auto;
 `;
 

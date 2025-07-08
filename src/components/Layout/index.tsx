@@ -12,7 +12,22 @@ type Props = {
 export const myFont = localFont({
   src: [
     {
+      path: '../../../public/fonts/SCDream1.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/SCDream2.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
       path: '../../../public/fonts/SCDream3.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/SCDream4.woff2',
       weight: '400',
       style: 'normal',
     },
@@ -22,8 +37,23 @@ export const myFont = localFont({
       style: 'normal',
     },
     {
+      path: '../../../public/fonts/SCDream6.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
       path: '../../../public/fonts/SCDream7.woff2',
       weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/SCDream8.woff2',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../../../public/fonts/SCDream9.woff2',
+      weight: '900',
       style: 'normal',
     },
     {
