@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Github } from '@emotion-icons/evaicons-solid/Github';
 import { Instagram } from 'emotion-icons/boxicons-logos';
 import { Mail } from 'emotion-icons/material';
-import { PostData } from '@/types/types';
+import { PostListData } from '@/types/types';
 import { ArrowLeftCircle } from '@emotion-icons/bootstrap';
 import { ArrowRightCircle } from '@emotion-icons/bootstrap';
 
@@ -12,8 +12,8 @@ export const Footer = ({
   prevPost,
   nextPost,
 }: {
-  prevPost: PostData;
-  nextPost: PostData;
+  prevPost: PostListData | null;
+  nextPost: PostListData | null;
 }) => {
   return (
     <S.Wrapper>
