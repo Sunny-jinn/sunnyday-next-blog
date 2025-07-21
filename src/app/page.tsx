@@ -1,3 +1,5 @@
+'use client'; // Map 컴포넌트가 ssr: false이므로, 이 페이지는 클라이언트 컴포넌트여야 합니다.
+
 import dynamic from 'next/dynamic';
 
 // Map 컴포넌트를 동적으로 임포트

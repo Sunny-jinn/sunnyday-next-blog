@@ -16,6 +16,11 @@ export type PostData = PostMeta & {
   contentHtml: string;
 };
 
+export type PostListData = Pick<
+  PostMeta,
+  'slug' | 'title' | 'date' | 'excerpt' | 'coverImage' | 'category'
+>;
+
 export type HeaderProps = {
   back?: boolean;
 };
