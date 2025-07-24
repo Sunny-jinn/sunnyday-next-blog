@@ -22,11 +22,10 @@ export default function PostDetail({
   prevPost,
   nextPost,
 }: Props) {
-  const { category, title, date } = post;
+  const { category, title, date, slug } = post;
 
   return (
     <S.Wrapper>
-      <S.TempHeader />
       <Link href={`/posts/${category}`}>
         <S.PostCategory>#{category}</S.PostCategory>
       </Link>
@@ -35,7 +34,7 @@ export default function PostDetail({
       <S.PostLine />
       <PostContent mdxSource={mdxSource} />
       <Footer prevPost={prevPost} nextPost={nextPost} />
-      <Comments postId={title} />
+      <Comments postId={slug} />
     </S.Wrapper>
   );
 }

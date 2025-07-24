@@ -19,7 +19,7 @@ export default function PostList({
 }: Props) {
   return (
     <S.Wrapper>
-      <S.TempHeader />
+      {/* <S.TempHeader /> */}
       <S.Title>POSTS</S.Title>
       <S.Categories>
         <Link href={`/posts`}>

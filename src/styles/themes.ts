@@ -10,6 +10,7 @@ const theme: Theme = {
     gray_300: '#4a4a4a',
     gray_400: '#3d3d3d',
     celeste_100: '#bcf8e8',
+    celeste_200: '#99e6d4',
   },
 };
 
