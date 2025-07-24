@@ -27,6 +27,11 @@ export const Comments = ({ postId }: CommentsProps) => {
   const [comments, setComments] = useState<Comment[]>([]); // 불러온 댓글 목록
   const [loading, setLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState<string | null>(null); // 에러 상태
+  const [deletingCommentId, setDeletingCommentId] = useState<string | null>(
+    null,
+  );
+  const [deletePassword, setDeletePassword] = useState('');
+  const [deleteMessage, setDeleteMessage] = useState('');
 
   // 댓글 불러오기 함수
   const fetchComments = async () => {
@@ -43,7 +48,6 @@ export const Comments = ({ postId }: CommentsProps) => {
         console.error('Error fetching comments:', error);
         setError('댓글을 불러오는 데 실패했습니다.');
       } else {
-        console.log(data);
         setComments(data || []);
       }
     } catch (err) {
@@ -66,7 +70,7 @@ export const Comments = ({ postId }: CommentsProps) => {
     setMessage(''); // 메시지 초기화
 
     // 간단한 유효성 검사
-    if (!name || !nickname || !password || !content) {
+    if (!name || !password || !content) {
       setMessage('모든 필드를 채워주세요.');
       return;
     }
@@ -101,57 +105,57 @@ export const Comments = ({ postId }: CommentsProps) => {
     }
   };
 
+  const handleDelete = async (commentId: string) => {
+    setDeleteMessage('');
+    if (!deletePassword) {
+      setDeleteMessage('비밀번호를 입력하세요.');
+      return;
+    }
+
+    try {
+      const { data: commentToDelete, error: fetchError } = await supabase
+        .from('comments')
+        .select('password')
+        .eq('id', commentId)
+        .single();
+
+      if (fetchError || !commentToDelete) {
+        console.error('Error fetching comment for deletion:', fetchError);
+        setDeleteMessage('댓글을 찾을 수 없습니다.');
+        return;
+      }
+
+      if (commentToDelete.password !== deletePassword) {
+        setDeleteMessage('비밀번호가 일치하지 않습니다.');
+        return;
+      }
+
+      const { error: deleteError } = await supabase
+        .from('comments')
+        .delete()
+        .eq('id', commentId)
+        .eq('post_id', postId);
+
+      if (deleteError) {
+        console.error('Error deleting comment:', deleteError);
+        setDeleteMessage(`삭제 실패: ${deleteError.message}`);
+      } else {
+        setDeleteMessage('댓글이 삭제되었습니다.');
+        setDeletingCommentId(null);
+        setDeletePassword('');
+        fetchComments();
+      }
+    } catch (err) {
+      console.error('Unexpected error during deletion:', err);
+      setDeleteMessage('알 수 없는 오류가 발생했습니다.');
+    }
+  };
+
   return (
     <S.Wrapper>
-      <S.Title>댓글</S.Title>
-      <S.CommentForm onSubmit={handleSubmit}>
-        <S.InputGroup>
-          <S.Label htmlFor="name">이름:</S.Label>
-          <S.Input
-            type="text"
-            id="name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-          />
-        </S.InputGroup>
-        <S.InputGroup>
-          <S.Label htmlFor="nickname">닉네임:</S.Label>
-          <S.Input
-            type="text"
-            id="nickname"
-            value={nickname}
-            onChange={e => setNickname(e.target.value)}
-            required
-          />
-        </S.InputGroup>
-        <S.InputGroup>
-          <S.Label htmlFor="password">비밀번호:</S.Label>
-          <S.Input
-            type="password"
-            id="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          />
-        </S.InputGroup>
-        <S.InputGroup>
-          <S.Label htmlFor="content">내용:</S.Label>
-          <S.Textarea
-            id="content"
-            value={content}
-            onChange={e => setContent(e.target.value)}
-            required
-          />
-        </S.InputGroup>
-        <S.SubmitButton type="submit">댓글 작성</S.SubmitButton>
-      </S.CommentForm>
-      {message && <S.Message>{message}</S.Message>}
+      <S.Title>Comments - {comments.length}</S.Title>
 
       <S.CommentList>
-        {loading && <p>댓글을 불러오는 중...</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {!loading && comments.length === 0 && <p>아직 댓글이 없습니다.</p>}
         {!loading &&
           comments.map(comment => (
             <S.CommentItem key={comment.id}>
@@ -160,11 +164,88 @@ export const Comments = ({ postId }: CommentsProps) => {
                   {comment.nickname || comment.name}
                 </S.CommentNickname>
                 <S.CommentDate>{formatDate(comment.created_at)}</S.CommentDate>
+                <S.DeleteButton
+                  onClick={() => {
+                    setDeletingCommentId(
+                      deletingCommentId === comment.id ? null : comment.id,
+                    );
+                    setDeletePassword('');
+                    setDeleteMessage('');
+                  }}
+                >
+                  삭제
+                </S.DeleteButton>
               </S.CommentHeader>
               <S.CommentContent>{comment.content}</S.CommentContent>
+              {deletingCommentId === comment.id && (
+                <S.DeleteForm
+                  onSubmit={e => {
+                    e.preventDefault();
+                    handleDelete(comment.id);
+                  }}
+                >
+                  <S.Input
+                    type="password"
+                    placeholder="비밀번호 입력"
+                    value={deletePassword}
+                    onChange={e => setDeletePassword(e.target.value)}
+                    autoFocus
+                  />
+                  <S.DeleteConfirmButton type="submit">
+                    확인
+                  </S.DeleteConfirmButton>
+                  <S.DeleteCancelButton
+                    type="button"
+                    onClick={() => setDeletingCommentId(null)}
+                  >
+                    취소
+                  </S.DeleteCancelButton>
+                  {deleteMessage && (
+                    <S.DeleteMessage>{deleteMessage}</S.DeleteMessage>
+                  )}
+                </S.DeleteForm>
+              )}
             </S.CommentItem>
           ))}
       </S.CommentList>
+      <S.CommentForm onSubmit={handleSubmit}>
+        <S.InputGroup>
+          <S.Input
+            type="text"
+            id="name"
+            placeholder="이름 (저한테만 보여요)"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+          <S.Input
+            type="text"
+            id="nickname"
+            placeholder="닉네임"
+            value={nickname}
+            onChange={e => setNickname(e.target.value)}
+          />
+          <S.Input
+            type="password"
+            id="password"
+            placeholder="비밀번호 (삭제할 때 필요해요)"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+        </S.InputGroup>
+
+        <S.InputGroup>
+          <S.Textarea
+            id="content"
+            placeholder="댓글을 입력해주세요."
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            required
+          />
+        </S.InputGroup>
+        <S.SubmitButton type="submit">댓글 작성</S.SubmitButton>
+      </S.CommentForm>
     </S.Wrapper>
   );
 };

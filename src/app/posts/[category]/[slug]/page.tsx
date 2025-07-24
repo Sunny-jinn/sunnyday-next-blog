@@ -31,7 +31,7 @@ export async function generateMetadata({
 type PostDetailData = Omit<PostListData, 'category' | 'coverImage'>;
 
 async function getData(slug: string) {
-  const { mdxSource, data, content } = await getPost(slug);
+  const { mdxSource, data } = await getPost(slug);
   const allPosts = getAllPosts([
     'title',
     'slug',
@@ -57,7 +57,6 @@ export default async function PostPage({
   params: { slug: string };
 }) {
   const { mdxSource, data, prevPost, nextPost } = await getData(params.slug);
-
   // 데이터는 클라이언트 컴포넌트에 props로 전달합니다.
   return (
     <PostDetail

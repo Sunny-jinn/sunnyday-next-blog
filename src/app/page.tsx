@@ -1,10 +1,28 @@
-'use client'; // Map 컴포넌트가 ssr: false이므로, 이 페이지는 클라이언트 컴포넌트여야 합니다.
-
 import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
 
-// Map 컴포넌트를 동적으로 임포트
+export const metadata: Metadata = {
+  title: "Sunny's blog - 프론트엔드 개발자의 기술 블로그",
+  description:
+    '주니어 프론트엔드 개발자 sunny의 기술 블로그입니다. React, Next.js, TypeScript 등의 개발 경험을 공유합니다.',
+  openGraph: {
+    type: 'website',
+    url: '/',
+    title: "Sunny's blog - 프론트엔드 개발자의 기술 블로그",
+    description:
+      '주니어 프론트엔드 개발자 sunny의 기술 블로그입니다. React, Next.js, TypeScript 등의 개발 경험을 공유합니다.',
+    images: [
+      {
+        url: '/assets/ogImage.png',
+        width: 285,
+        height: 167,
+      },
+    ],
+  },
+};
+
 const Map = dynamic(() => import('@/components/Map'), {
-  ssr: false, // 3D 모델은 클라이언트 사이드에서만 렌더링
+  ssr: false,
 });
 
 const Home = () => {

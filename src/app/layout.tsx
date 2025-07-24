@@ -52,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     // _document.tsx의 lang="en" 설정을 반영합니다.
-    <html lang="en">
+    <html lang="ko">
       <body>
         <ClientProviders>{children}</ClientProviders>
       </body>
