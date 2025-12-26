@@ -1,3 +1,5 @@
+'use client';
+
 import { Scroll, ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import Interface from '../Interface';
