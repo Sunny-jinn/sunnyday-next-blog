@@ -1,7 +1,6 @@
 'use client';
 
 import { formatDate } from '@/api/date';
-import { Comments } from '@/components/Comments';
 import { Footer } from '@/components/Footer';
 import * as S from '@/styles/posts/category';
 import { PostListData } from '@/types/types';
@@ -22,7 +21,7 @@ export default function PostDetail({
   prevPost,
   nextPost,
 }: Props) {
-  const { category, title, date, slug } = post;
+  const { category, title, date } = post;
 
   return (
     <S.Wrapper>
@@ -34,7 +33,7 @@ export default function PostDetail({
       <S.PostLine />
       <PostContent mdxSource={mdxSource} />
       <Footer prevPost={prevPost} nextPost={nextPost} />
-      <Comments postId={slug} />
+      {/* <Comments postId={slug} /> */}
     </S.Wrapper>
   );
 }

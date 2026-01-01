@@ -4,7 +4,6 @@ import * as S from './styled';
 import Skills from '../Skills';
 
 import { motion } from 'framer-motion';
-import React from 'react';
 import Projects from '../Projects';
 
 const myFont = localFont({

@@ -8,7 +8,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import { Group } from 'emotion-icons/boxicons-regular';
 
 export function Office(props: any) {
-  const group = useRef();
+  const group = useRef(null);
   const screen = useRef(null);
 
   const { nodes, materials, animations }: any = useGLTF('/models/office.gltf');

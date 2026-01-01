@@ -1,8 +1,8 @@
-import { RootState, useThree } from '@react-three/fiber';
+import { RootState, useThree, useFrame } from '@react-three/fiber';
 import { MyCharacter } from './MyCharacter';
-
-import { motion } from 'framer-motion-3d';
-import { useCallback, useEffect, useState } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
+import { Group } from 'three';
+import * as THREE from 'three';
 
 type CharacterProps = {
   section: number;
@@ -10,7 +10,8 @@ type CharacterProps = {
 
 const Character = ({ section }: CharacterProps) => {
   const [animation, setAnimation] = useState<string>('Typing');
-  const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true); // 블로그 처음 방문 시 떨어지는 애니메이션 재생 안 되게
+  const [isFirstLoading, setIsFirstLoading] = useState<boolean>(true);
+  const groupRef = useRef<Group>(null);
 
   const [windowSize, setWindowSize] = useState({
     width: 0,
@@ -52,37 +53,56 @@ const Character = ({ section }: CharacterProps) => {
     setIsFirstLoading(false);
     setTimeout(() => {
       if (section === 0) {
-        // 첫 화면일 때
         setAnimation('Typing');
       } else if (section === 1) {
         setAnimation('Waving');
       }
     }, 600);
-  }, [section]);
+  }, [section, isFirstLoading]);
+
+  useFrame((_state, delta) => {
+    if (!groupRef.current) return;
+
+    const targetPos = section === 1
+      ? new THREE.Vector3(position.x, -viewport.height - position.y, position.z)
+      : new THREE.Vector3(0.5, -1.2, 0.5);
+
+    const targetRot = section === 1
+      ? new THREE.Euler(0.5, -2.2, 0.5)
+      : new THREE.Euler(0, 0, 0);
+
+    const targetScale = section === 1 ? 2 : 1;
+
+    groupRef.current.position.lerp(targetPos, delta * 0.9);
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(
+      groupRef.current.rotation.x,
+      targetRot.x,
+      delta * 0.9
+    );
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(
+      groupRef.current.rotation.y,
+      targetRot.y,
+      delta * 0.9
+    );
+    groupRef.current.rotation.z = THREE.MathUtils.lerp(
+      groupRef.current.rotation.z,
+      targetRot.z,
+      delta * 0.9
+    );
+    groupRef.current.scale.lerp(
+      new THREE.Vector3(targetScale * 2, targetScale * 2, targetScale * 2),
+      delta * 0.9
+    );
+  });
 
   return (
-    <motion.group
+    <group
+      ref={groupRef}
       position={[0.5, -1.2, 0.5]}
-      animate={'' + section}
-      transition={{ duration: 1.1 }}
-      variants={{
-        0: {},
-        1: {
-          y: -viewport.height - position.y,
-          x: position.x,
-          z: position.z,
-          rotateX: 0.5,
-          rotateY: -2.2,
-          rotateZ: 0.5,
-          scaleX: 2,
-          scaleY: 2,
-          scaleZ: 2,
-        },
-      }}
       scale={2}
     >
       <MyCharacter section={section} animation={animation} />
-    </motion.group>
+    </group>
   );
 };
 

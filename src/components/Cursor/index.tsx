@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as S from './styled';
 
 const CURSOR_SPEED = 0.35;
@@ -10,7 +10,6 @@ let outlineY = 0;
 
 export const Cursor = () => {
   const cursorOutline = useRef<HTMLDivElement>(null);
-  const [hoverButton, setHoverButton] = useState(false);
 
   const animate = () => {
     let distX = mouseX - outlineX;
@@ -27,7 +26,7 @@ export const Cursor = () => {
   };
 
   useEffect(() => {
-    const mouseMoveHandler = (event: any) => {
+    const mouseMoveHandler = (event: MouseEvent) => {
       mouseX = event.pageX;
       mouseY = event.pageY;
     };
@@ -41,9 +40,5 @@ export const Cursor = () => {
     };
   }, []);
 
-  return (
-    <>
-      <S.CustomCursor hoverButton={hoverButton} ref={cursorOutline} />
-    </>
-  );
+  return <S.CustomCursor hoverButton={false} ref={cursorOutline} />;
 };

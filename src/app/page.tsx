@@ -21,9 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Map = dynamic(() => import('@/components/Map'), {
-  ssr: false,
-});
+const Map = dynamic(() => import('@/components/Map'));
 
 const Home = () => {
   return <Map />;

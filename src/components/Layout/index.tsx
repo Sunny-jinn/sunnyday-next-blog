@@ -1,3 +1,5 @@
+'use client';
+
 import localFont from 'next/font/local';
 import Header from '../Header';
 

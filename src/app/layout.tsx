@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { DefaultSeo } from 'next-seo';
 import ClientProviders from '@/components/ClientProviders';
 
 import '@/styles/map.css';

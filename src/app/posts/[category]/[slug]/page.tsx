@@ -1,14 +1,15 @@
 import { getAllPosts, getPost } from '@/api/api';
-import PostDetail from '@/components/Post/PostDetail'; // UI 컴포넌트 import
+import PostDetail from '@/components/Post/PostDetail';
 import { PostListData } from '@/types/types';
 import { Metadata } from 'next';
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ category: string; slug: string }>;
 }): Promise<Metadata> {
-  const { data } = await getPost(params.slug);
+  const { slug } = await params;
+  const { data } = await getPost(slug);
   return {
     title: data.title,
     description: data.excerpt,
@@ -50,14 +51,13 @@ async function getData(slug: string) {
   return { mdxSource, data: data as PostListData, prevPost, nextPost };
 }
 
-// 서버 컴포넌트는 데이터 페칭만 담당합니다.
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ category: string; slug: string }>;
 }) {
-  const { mdxSource, data, prevPost, nextPost } = await getData(params.slug);
-  // 데이터는 클라이언트 컴포넌트에 props로 전달합니다.
+  const { slug } = await params;
+  const { mdxSource, data, prevPost, nextPost } = await getData(slug);
   return (
     <PostDetail
       post={data}
