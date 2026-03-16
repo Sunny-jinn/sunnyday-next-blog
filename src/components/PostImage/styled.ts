@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 export const Caption = styled.div`
   font-size: 14px;
   font-weight: 400;
-  color: #bbb;
+  color: ${({ theme }) => theme.color.gray_200};
 `;
 
 export const ImageWrapper = styled.div`

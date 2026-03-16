@@ -39,7 +39,7 @@ export const ScrollbarContainer = styled.div`
   position: relative;
   width: calc(100% - 20px);
   height: 4px;
-  background-color: #26507355;
+  background-color: var(--color-link-alpha33);
   border-radius: 2px;
   margin: 15px auto 0;
   display: flex;
@@ -50,25 +50,25 @@ export const ScrollbarThumb = styled.div`
   position: absolute;
   height: 7px;
   width: 30%;
-  background-color: #265073aa;
+  background-color: var(--color-link-alpha67);
   border-radius: 999px;
   transition: background-color 0.2s;
   cursor: pointer;
   user-select: none;
 
   &:hover {
-    background-color: #265073;
+    background-color: ${({ theme }) => theme.color.link};
   }
 
   &:active {
-    background-color: #265073;
+    background-color: ${({ theme }) => theme.color.link};
   }
 `;
 
 export const Caption = styled.div`
   font-size: 14px;
   font-weight: 400;
-  color: #bbb;
+  color: ${({ theme }) => theme.color.gray_200};
   text-align: center;
   margin-top: 10px;
 `;

@@ -1,10 +1,6 @@
 import fs from 'fs';
 import path, { join } from 'path';
 import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
-
-import remarkToc from 'remark-toc';
-import remarkGfm from 'remark-gfm';
 const postsDirectory = join(process.cwd(), '_posts');
 
 export const postFilePaths = fs
@@ -44,16 +40,11 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items;
 }
 
-export const getPost = async (slug: string) => {
+export const getPost = (slug: string) => {
   const postFilePath = path.join(postsDirectory, `${slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
+  const source = fs.readFileSync(postFilePath, 'utf8');
   const { content, data } = matter(source);
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [remarkToc, remarkGfm],
-    },
-  });
-  return { mdxSource, data, content };
+  return { content, data };
 };
 
 export function getAllPosts(fields: string[] = []) {

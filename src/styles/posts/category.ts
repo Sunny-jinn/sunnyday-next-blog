@@ -23,9 +23,21 @@ export const Wrapper = styled.div`
   h3 {
     & > a {
       text-decoration: underline;
-      color: #265073;
+      color: ${({ theme }) => theme.color.link};
       font-weight: 500;
     }
+  }
+
+  ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    li { list-style-type: decimal; }
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    li { list-style-type: disc; }
   }
 `;
 
@@ -47,7 +59,7 @@ export const Title = styled.div`
 
 export const PostCategory = styled.div`
   font-style: italic;
-  color: #265073;
+  color: ${({ theme }) => theme.color.link};
   cursor: pointer;
   position: relative;
   display: inline-block;
@@ -60,7 +72,7 @@ export const PostCategory = styled.div`
     height: 1px;
     left: 50%;
     position: absolute;
-    background: #265073;
+    background: ${({ theme }) => theme.color.link};
     transition:
       width 0.3s ease 0s,
       left 0.3s ease 0s;
@@ -75,12 +87,12 @@ export const PostCategory = styled.div`
 
 export const PostDate = styled.div`
   font-size: 14px;
-  color: #444;
+  color: ${({ theme }) => theme.color.post_date};
   margin-bottom: 40px;
 `;
 
 export const PostLine = styled.div`
   width: 100%;
-  border-top: 1px solid #bbb;
+  border-top: 1px solid ${({ theme }) => theme.color.divider};
   margin-bottom: 40px;
 `;

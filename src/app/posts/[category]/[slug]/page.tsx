@@ -1,7 +1,17 @@
 import { getAllPosts, getPost } from '@/api/api';
+import PostContent from '@/components/Post/PostContent';
 import PostDetail from '@/components/Post/PostDetail';
+import PostMDXContent from '@/components/Post/PostMDXContent';
 import { PostListData } from '@/types/types';
 import { Metadata } from 'next';
+
+export function generateStaticParams() {
+  const posts = getAllPosts(['slug', 'category']);
+  return posts.map(post => ({
+    category: post.category as string,
+    slug: post.slug as string,
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -9,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ category: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const { data } = await getPost(slug);
+  const { data } = getPost(slug);
   return {
     title: data.title,
     description: data.excerpt,
@@ -31,8 +41,8 @@ export async function generateMetadata({
 
 type PostDetailData = Omit<PostListData, 'category' | 'coverImage'>;
 
-async function getData(slug: string) {
-  const { mdxSource, data } = await getPost(slug);
+function getData(slug: string) {
+  const { content, data } = getPost(slug);
   const allPosts = getAllPosts([
     'title',
     'slug',
@@ -48,7 +58,7 @@ async function getData(slug: string) {
       ? (allPosts[currentIndex + 1] as PostListData)
       : null;
 
-  return { mdxSource, data: data as PostListData, prevPost, nextPost };
+  return { content, data: data as PostListData, prevPost, nextPost };
 }
 
 export default async function PostPage({
@@ -57,13 +67,12 @@ export default async function PostPage({
   params: Promise<{ category: string; slug: string }>;
 }) {
   const { slug } = await params;
-  const { mdxSource, data, prevPost, nextPost } = await getData(slug);
+  const { content, data, prevPost, nextPost } = getData(slug);
   return (
-    <PostDetail
-      post={data}
-      mdxSource={mdxSource}
-      prevPost={prevPost}
-      nextPost={nextPost}
-    />
+    <PostDetail post={data} prevPost={prevPost} nextPost={nextPost}>
+      <PostContent>
+        <PostMDXContent source={content} />
+      </PostContent>
+    </PostDetail>
   );
 }

@@ -4,7 +4,7 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
-  transpilePackages: ['three']
+  transpilePackages: ['three'],
 };
 
 module.exports = nextConfig;

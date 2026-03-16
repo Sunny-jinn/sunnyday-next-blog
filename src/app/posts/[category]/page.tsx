@@ -3,12 +3,19 @@ import { PostListData } from '@/types/types';
 import PostList from '@/components/Post/PostList'; // UI 컴포넌트 import
 import { Metadata } from 'next';
 
+export function generateStaticParams() {
+  const categoriesSet = new Set(
+    getAllPosts(['category']).map(post => post.category as string),
+  );
+  return Array.from(categoriesSet).map(category => ({ category }));
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }): Promise<Metadata> {
-  const category = params.category;
+  const { category } = await params;
   return {
     title: `Sunny의 ${category}`,
     description: `Sunny의 ${category}글 보기`,
@@ -28,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-async function getData(category: string) {
+function getData(category: string) {
   const posts = getPostsByCategory(category, [
     'slug',
     'title',
@@ -47,9 +54,9 @@ async function getData(category: string) {
 export default async function CategoryPage({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const { category } = params;
+  const { category } = await params;
   const { posts, categories } = await getData(category);
 
   return (

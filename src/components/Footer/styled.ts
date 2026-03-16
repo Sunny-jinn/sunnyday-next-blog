@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   gap: 50px;
 
   width: 100%;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid ${({ theme }) => theme.color.divider};
   margin-top: 30px;
   padding: 50px 0;
   margin-top: 100px;
@@ -38,7 +38,7 @@ export const IntroTitle = styled.div`
 export const IntroSubTitle = styled.div`
   font-size: 13px;
   font-weight: 400;
-  color: #888;
+  color: ${({ theme }) => theme.color.gray_200};
 `;
 
 export const IntroIcons = styled.div`
@@ -48,12 +48,12 @@ export const IntroIcons = styled.div`
 
 export const IconBox = styled.div`
   cursor: pointer;
-  color: #444;
+  color: ${({ theme }) => theme.color.post_date};
   transition: all 0.2s ease;
 
   &:hover {
     scale: 1.05;
-    color: #000;
+    color: ${({ theme }) => theme.color.white_100};
   }
 `;
 
@@ -73,13 +73,13 @@ export const Navigation = styled.div`
   padding: 5px 10px;
   transition: all 0.2s ease;
   border-radius: 10px;
-  color: #888;
+  color: ${({ theme }) => theme.color.gray_200};
 
   cursor: pointer;
 
   &:hover {
-    color: #000;
-    background-color: #d5ddbe;
+    color: ${({ theme }) => theme.color.white_100};
+    background-color: ${({ theme }) => theme.color.nav_hover_bg};
   }
 `;
 

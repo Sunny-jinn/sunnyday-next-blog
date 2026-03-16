@@ -4,20 +4,18 @@ import { formatDate } from '@/api/date';
 import { Footer } from '@/components/Footer';
 import * as S from '@/styles/posts/category';
 import { PostListData } from '@/types/types';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import Link from 'next/link';
-import PostContent from './PostContent';
 
 interface Props {
   post: PostListData;
-  mdxSource: MDXRemoteSerializeResult;
+  children: React.ReactNode;
   prevPost: PostListData | null;
   nextPost: PostListData | null;
 }
 
 export default function PostDetail({
   post,
-  mdxSource,
+  children,
   prevPost,
   nextPost,
 }: Props) {
@@ -31,7 +29,7 @@ export default function PostDetail({
       <S.Title>{title}</S.Title>
       <S.PostDate>{formatDate(date)}</S.PostDate>
       <S.PostLine />
-      <PostContent mdxSource={mdxSource} />
+      {children}
       <Footer prevPost={prevPost} nextPost={nextPost} />
       {/* <Comments postId={slug} /> */}
     </S.Wrapper>

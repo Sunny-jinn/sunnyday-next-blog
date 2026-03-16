@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import ClientProviders from '@/components/ClientProviders';
+import EmotionRegistry from '@/lib/EmotionRegistry';
 
 import '@/styles/map.css';
 
@@ -51,9 +52,16 @@ export default function RootLayout({
 }) {
   return (
     // _document.tsx의 lang="en" 설정을 반영합니다.
-    <html lang="ko">
-      <body>
-        <ClientProviders>{children}</ClientProviders>
+    <html lang="ko" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
+        <EmotionRegistry>
+          <ClientProviders>{children}</ClientProviders>
+        </EmotionRegistry>
       </body>
     </html>
   );

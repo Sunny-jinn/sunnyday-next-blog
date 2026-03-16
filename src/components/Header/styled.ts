@@ -1,6 +1,5 @@
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import { HeaderProps } from '@/types/types';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -35,21 +34,20 @@ export const Menus = styled.ul`
   justify-content: space-between;
 `;
 
-const menuStyle = css`
+export const Menu = styled.li`
   transition: 0.3s;
-
   &:hover {
     scale: 1.05;
-    color: #265073;
+    color: ${({ theme }) => theme.color.link};
   }
 `;
 
-export const Menu = styled.li`
-  ${menuStyle}
-`;
-
 export const LogoMenu = styled.div`
-  ${menuStyle}
+  transition: 0.3s;
+  &:hover {
+    scale: 1.05;
+    color: ${({ theme }) => theme.color.link};
+  }
 `;
 
 export const Logo = styled.div`
@@ -60,13 +58,13 @@ export const Logo = styled.div`
 
   @media (min-width: 900px) {
     img {
-      display: none; /* 이미지 숨김 */
+      display: none;
     }
   }
 
   @media ${TABLET_MEDIA_QUERY} {
     span {
-      display: none; /* 텍스트 숨김 */
+      display: none;
     }
   }
 `;

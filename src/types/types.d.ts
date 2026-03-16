@@ -23,4 +23,5 @@ export type PostListData = Pick<
 
 export type HeaderProps = {
   back?: boolean;
+  onToggleTheme?: () => void;
 };

@@ -9,6 +9,7 @@ type Props = {
   preview?: boolean;
   back?: boolean;
   children?: React.ReactNode;
+  onToggleTheme?: () => void;
 };
 
 export const myFont = localFont({
@@ -68,11 +69,11 @@ export const myFont = localFont({
   display: 'swap',
 });
 
-const Layout = ({ back, children }: Props) => {
+const Layout = ({ back, children, onToggleTheme }: Props) => {
   return (
     <main className={myFont.className}>
       <S.Wrapper>
-        <Header back={back} />
+        <Header back={back} onToggleTheme={onToggleTheme} />
         {children}
       </S.Wrapper>
     </main>

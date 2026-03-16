@@ -13,7 +13,7 @@ const Banner = () => {
               backgroundColor: '#265073',
               color: '#fff',
               paddingLeft: 10,
-            }}
+            }} 
           >
             <ReactTyped
               strings={['Frontend', 'Three.js', 'React', 'Typescript']}
