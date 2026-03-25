@@ -1,12 +1,10 @@
 import { TABLET_MEDIA_QUERY } from '@/styles/Global';
 import styled from '@emotion/styled';
 
-// CustomCursorProps 타입 정의
 type CustomCursorProps = {
   hoverButton: boolean;
 };
 
-// styled.div에 타입을 적용
 export const CustomCursor = styled.div<CustomCursorProps>`
   position: fixed;
   transform: translate(-50%, -50%);
@@ -15,8 +13,8 @@ export const CustomCursor = styled.div<CustomCursorProps>`
   transition: transform 0.3s ease-out;
   width: ${props => (props.hoverButton ? '20px' : '12px')};
   height: ${props => (props.hoverButton ? '20px' : '12px')};
-  background-color: ${props => (props.hoverButton ? 'transparent' : '#265073')};
-  border: ${props => (props.hoverButton ? '2px solid #265073' : 'none')};
+  background-color: ${props => (props.hoverButton ? 'transparent' : props.theme.color.link)};
+  border: ${props => (props.hoverButton ? `2px solid ${props.theme.color.link}` : 'none')};
   z-index: 50;
 
   @media ${TABLET_MEDIA_QUERY} {

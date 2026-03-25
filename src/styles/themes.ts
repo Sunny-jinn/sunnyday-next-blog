@@ -30,6 +30,11 @@ const theme: Theme = {
 
     // 네비게이션
     nav_hover_bg: 'var(--color-navHoverBg)',
+
+    // 상태
+    error: 'var(--color-error)',
+    disabled_bg: 'var(--color-disabled)',
+    header_bg: 'var(--color-headerBg)',
   },
 };
 

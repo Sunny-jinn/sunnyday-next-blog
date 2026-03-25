@@ -31,6 +31,11 @@ declare module '@emotion/react' {
 
       // 네비게이션
       nav_hover_bg: string;
+
+      // 상태
+      error: string;
+      disabled_bg: string;
+      header_bg: string;
     };
   }
 }

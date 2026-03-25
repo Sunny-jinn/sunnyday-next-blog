@@ -33,7 +33,7 @@ export const InputGroup = styled.div`
 export const Input = styled.input`
   flex-grow: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid ${props => props.theme.color.divider};
   border-radius: 4px;
   font-size: 16px;
   background-color: ${props => props.theme.color.background};
@@ -50,7 +50,7 @@ export const Input = styled.input`
 export const Textarea = styled.textarea`
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid ${props => props.theme.color.divider};
   border-radius: 4px;
   font-size: 16px;
   min-height: 100px;
@@ -80,7 +80,7 @@ export const SubmitButton = styled.button`
   }
 
   &:disabled {
-    background-color: #cccccc;
+    background-color: ${props => props.theme.color.disabled_bg};
     cursor: not-allowed;
   }
 `;
@@ -88,7 +88,7 @@ export const SubmitButton = styled.button`
 export const Message = styled.p`
   margin-top: 10px;
   font-size: 14px;
-  color: red;
+  color: ${props => props.theme.color.error};
   text-align: center;
 `;
 

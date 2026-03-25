@@ -1,35 +1,62 @@
 'use client';
 
-import { Scroll, ScrollControls } from '@react-three/drei';
-import { Canvas, useThree } from '@react-three/fiber';
-import Interface from '../Interface';
-import { useState } from 'react';
-import ScrollManager from '../ScrollManager';
+import { Canvas } from '@react-three/fiber';
+import { Suspense, useEffect, useState } from 'react';
+import Curtain from '../Curtain';
 import { Cursor } from '../Cursor';
-
 import * as S from './styled';
-import Background from '../Background';
-import { MeshBasicMaterial } from 'three';
+
+const CAMERA_POSITION: [number, number, number] = [0, 0.15, 5];
+
+const useIsDark = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    setIsDark((document.documentElement.getAttribute('data-theme') ?? 'dark') === 'dark');
+
+    const observer = new MutationObserver(() => {
+      setIsDark((document.documentElement.getAttribute('data-theme') ?? 'dark') === 'dark');
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return isDark;
+};
 
 const Map = () => {
-  const [section, setSection] = useState<number>(0);
+  const isDark = useIsDark();
+  const backgroundColor = isDark ? '#333232' : '#f9f8f4';
 
   return (
     <>
       <S.Wrapper>
-        <Canvas shadows>
-          <ambientLight intensity={2} />
-          <directionalLight position={[-5, 5, 5]} intensity={4} castShadow />
-          <ScrollControls pages={4} damping={0.1}>
-            <ScrollManager section={section} onSectionChange={setSection} />
-            <Scroll>
-              <CustomComponent />
-              <Background />
-            </Scroll>
-            <Scroll html>
-              <Interface />
-            </Scroll>
-          </ScrollControls>
+        <Canvas
+          camera={{ position: CAMERA_POSITION, fov: 36 }}
+          dpr={[1, 1.75]}
+        >
+          <color attach="background" args={[backgroundColor]} />
+          <fog attach="fog" args={[backgroundColor, 8, 16]} />
+
+          <hemisphereLight intensity={0.55} color="#fff8f2" groundColor="#5b4a45" />
+          <pointLight position={[0, 2.8, 2.6]} intensity={22} distance={12} color="#fff5ee" />
+          <spotLight
+            position={[0, 0.9, 4.1]}
+            angle={0.34}
+            penumbra={0.85}
+            intensity={26}
+            distance={14}
+            color="#ffe9dc"
+          />
+
+          <Suspense fallback={null}>
+            <Curtain />
+          </Suspense>
         </Canvas>
       </S.Wrapper>
       <Cursor />
@@ -38,31 +65,3 @@ const Map = () => {
 };
 
 export default Map;
-
-const CustomComponent = () => {
-  const GROUP_POSITION = [-1, -1, 0] as const;
-  const CAMERA_DEFAULT_POSITION = [0, 0, 5] as const;
-  
-  const lightPosition = [
-    CAMERA_DEFAULT_POSITION[0] - GROUP_POSITION[0], // 0 - (-1) = 1
-    CAMERA_DEFAULT_POSITION[1] - GROUP_POSITION[1], // 0 - (-1) = 1
-    CAMERA_DEFAULT_POSITION[2] - GROUP_POSITION[2]  // 5 - 0 = 5
-  ] as [number, number, number];
-
-  return (
-    <>
-      <group position={GROUP_POSITION}>
-        <axesHelper args={[10]} />
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color="black" />
-        </mesh>
-        <pointLight
-          position={[2,2,2]}
-          intensity={1000}
-          distance={0}
-        />
-      </group>
-    </>
-  );
-};

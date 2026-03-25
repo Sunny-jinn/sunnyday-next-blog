@@ -25,6 +25,9 @@ const styles = (theme: Theme) => css`
     --color-navHoverBg: #d5ddbe;
     --color-link-alpha33: #26507355;
     --color-link-alpha67: #265073aa;
+    --color-error: #e53e3e;
+    --color-disabled: #666666;
+    --color-headerBg: #ecf4d6;
   }
 
   [data-theme='white'] {
@@ -45,6 +48,9 @@ const styles = (theme: Theme) => css`
     --color-navHoverBg: #dde8c4;
     --color-link-alpha33: #1a5a8a55;
     --color-link-alpha67: #1a5a8aaa;
+    --color-error: #e53e3e;
+    --color-disabled: #cccccc;
+    --color-headerBg: #ecf4d6;
   }
 
   html,
@@ -98,7 +104,7 @@ const styles = (theme: Theme) => css`
   blockquote {
     background: ${theme.color.blockquote_bg};
     border-left: 6px solid ${theme.color.blockquote_border};
-    color: #fff;
+    color: ${theme.color.white_100};
     margin: 0;
     padding-left: 5px;
   }
