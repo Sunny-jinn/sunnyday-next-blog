@@ -1,83 +1,88 @@
-'use client';
+import { useCallback, useEffect, useState } from 'react';
 
-import React, { useEffect, useRef, useState } from 'react';
 import * as S from './styled';
-import { usePathname } from 'next/navigation';
+import { CommentForm, type ReplyTarget } from './CommentForm';
+import { CommentItem } from './CommentItem';
+import type { CommentNode } from '@/lib/comments/types';
 
-const GISCUS_CONFIG = {
-  repo: process.env.NEXT_PUBLIC_GITHUB_REPO,
-  repoId: process.env.NEXT_PUBLIC_GITHUB_REPO_ID,
-  category: process.env.NEXT_PUBLIC_GITHUB_CATEGORY,
-  categoryId: process.env.NEXT_PUBLIC_GITHUB_CATEGORY_ID,
-} as const;
+type Props = {
+  slug: string;
+};
 
-export const Comments = () => {
-  const [mounted, setMounted] = useState<boolean>(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useState<string>('gruvbox_light');
-  const pathname = usePathname();
+const countAll = (nodes: CommentNode[]): number =>
+  nodes.reduce((sum, node) => sum + 1 + node.replies.length, 0);
+
+export const Comments = ({ slug }: Props) => {
+  const [comments, setComments] = useState<CommentNode[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [replyTo, setReplyTo] = useState<ReplyTarget | null>(null);
+
+  // SSG 페이지이므로 마운트 후 클라이언트에서 불러온다.
+  const load = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/comments?slug=${encodeURIComponent(slug)}`);
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { comments: CommentNode[] };
+      setComments(data.comments);
+      setLoadError('');
+    } catch {
+      setLoadError('댓글을 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, [slug]);
 
   useEffect(() => {
-    if (!mounted) {
-      setMounted(true);
-    }
-  }, [mounted]);
+    load();
+  }, [load]);
 
-  const loadGiscus = () => {
-    const iframe = document.querySelector<HTMLIFrameElement>(
-      'iframe.giscus-frame',
-    );
-    iframe?.remove();
-
-    const script = document.querySelector(
-      'script[src="https://giscus.app/client.js"]',
-    );
-    script?.remove();
-
-    const scriptElement = document.createElement('script');
-    scriptElement.setAttribute('src', 'https://giscus.app/client.js');
-    scriptElement.setAttribute('data-repo', GISCUS_CONFIG.repo!);
-    scriptElement.setAttribute('data-repo-id', GISCUS_CONFIG.repoId!);
-    scriptElement.setAttribute('data-category', GISCUS_CONFIG.category!);
-    scriptElement.setAttribute('data-category-id', GISCUS_CONFIG.categoryId!);
-
-    scriptElement.setAttribute('data-mapping', 'pathname');
-    scriptElement.setAttribute('data-strict', '0');
-    scriptElement.setAttribute('data-reactions-enabled', '1');
-    scriptElement.setAttribute('data-emit-metadata', '0');
-    scriptElement.setAttribute('data-input-position', 'bottom');
-    scriptElement.setAttribute('data-lang', 'en');
-    scriptElement.setAttribute('data-theme', theme);
-    scriptElement.setAttribute('data-loading', 'lazy');
-    scriptElement.setAttribute('crossorigin', 'anonymous');
-    scriptElement.async = true;
-
-    ref.current?.appendChild(scriptElement);
+  const handleReply = (target: CommentNode) => {
+    setReplyTo({
+      // 답글에 답글을 달면 부모를 최상위 조상으로 승격시켜 깊이를 1단계로 유지한다.
+      parentId: target.parentId ?? target.id,
+      nickname: target.nickname,
+      mention: target.parentId !== null,
+    });
   };
 
-  useEffect(() => {
-    if (mounted) {
-      loadGiscus();
-    }
-  }, [mounted]);
+  return (
+    <S.CommentsContainer>
+      <S.Heading>
+        댓글
+        {!loading && <S.Count>{countAll(comments)}</S.Count>}
+      </S.Heading>
 
-  useEffect(() => {
-    if (mounted) {
-      loadGiscus();
-    }
-  }, [pathname]);
+      {loading && <S.Empty>불러오는 중…</S.Empty>}
+      {loadError && <S.Message error>{loadError}</S.Message>}
 
-  useEffect(() => {
-    const iframe = document.querySelector<HTMLIFrameElement>(
-      'iframe.giscus-frame',
-    );
-    iframe?.contentWindow?.postMessage(
-      { giscus: { setConfig: { theme } } },
-      'https://giscus.app',
-    );
-  }, [theme]);
+      {!loading && !loadError && comments.length === 0 && (
+        <S.Empty>아직 댓글이 없습니다.</S.Empty>
+      )}
 
-  if (!mounted) return null;
+      {comments.length > 0 && (
+        <S.List>
+          {comments.map(comment => (
+            <CommentItem
+              key={comment.id}
+              comment={comment}
+              onReply={handleReply}
+              onChanged={load}
+            />
+          ))}
+        </S.List>
+      )}
 
-  return <S.CommentsContainer ref={ref} />;
+      <CommentForm
+        slug={slug}
+        replyTo={replyTo}
+        onCancelReply={() => setReplyTo(null)}
+        onCreated={load}
+      />
+
+      <S.Notice>
+        스팸 방지를 위해 접속 IP의 일부를 변환한 값이 7일간 보관됩니다.
+      </S.Notice>
+    </S.CommentsContainer>
+  );
 };
