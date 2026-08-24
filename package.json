@@ -8,14 +8,18 @@
     "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prebuild": "node scripts/gen-slugs.mjs",
+    "predev": "node scripts/gen-slugs.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@libsql/client": "^0.14.0",
     "@react-three/drei": "9.75.0",
     "@react-three/fiber": "^8.15.11",
     "@types/three": "^0.158.2",
+    "bcryptjs": "^2.4.3",
     "emotion-icons": "^3.27.0",
     "framer-motion": "^10.16.5",
     "framer-motion-3d": "^10.16.5",
@@ -28,13 +32,14 @@
     "react": "^18",
     "react-dom": "^18",
     "react-typed": "^2.0.12",
-    "rehype-sanitize": "^6.0.0",
+    "rehype-highlight": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-toc": "^9.0.0",
     "three": "^0.158.0",
     "three-stdlib": "^2.28.5"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
